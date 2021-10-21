@@ -31,7 +31,7 @@
  <input type="button" href="" value="금주의 핫플"></input>
  <input type="button" onclick="location.href='cafeInsert.deco'" value="추천등록"></input>
  <a href="list.deco" class=" ">리스트 보기</a>
- <a href="cafe.deco?idx=1" class=" ">상세보기</a>
+ <a href="cafe.deco?idx=1" class=" ">상세보기</a> <!-- 여기서 직접 idx 주는데 그게 안넘어간걸까요? -->
  <a href="dibsList.deco" class=" ">찜목록</a>
  <a href="reviewList.deco" class=" ">리뷰목록</a>
 </section>

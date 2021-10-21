@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div>
-    <a href="home.deco">
+    <a href="./">
       <img src="" alt="">
       <span>DECO</span>
     </a>
@@ -42,14 +42,15 @@
   <div>
     <c:forEach var="vo" items="${CafeList}">
     <ul>
-    	<li>${vo.name }</li>
+    	<li> <a href ="cafe.deco?idx=${vo.idx}">${vo.name }</a></li>
+    	<li>${vo.location }</li>
        <li>${vo.content }</li>
-       <li>${vo.phone }</li>
-       <li>${vo.addr }</li>
-       <li>${vo.menu }</li>
        <li>${vo.grade }</li>
+       <li>${vo.menu }</li>
+       <li> <img alt="cafe-out" src="/image/${vo.outimage}"></li>
        <li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
-       <li>${vo.location }</li>
+       <li>${vo.addr }</li>
+       <li>${vo.phone }</li>
     </ul>
     </c:forEach>
   </div>

@@ -48,7 +48,13 @@ public class CafeDao {
 		
 	}
 	
-	
+	public void gradeup(Cafe cafe) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("cafe.gradeup",cafe);
+		mapper.commit();
+		mapper.close();
+		
+	}
 	
 	
 	

@@ -11,13 +11,35 @@
 		select * from cafe where idx = #{idx}
 	</select>
 	<insert id="insert" parameterType="Cafe">
-		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location)
-		VALUES (#{name},#{content},#{phone},#{addr},#{menu},#{opentime},#{closetime},#{grade},#{location})
+		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,inimage,outimage)
+		VALUES (#{name},#{content},#{phone},#{addr},#{menu},#{opentime},#{closetime},#{grade},#{location},#{inimage},#{outimage})
 	</insert>
 	<update id="update" parameterType="Cafe">
- 		update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+	 <if test="inimage!=null and outimage==null">
+		 update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+ 		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location},
+ 		inimage=#{inimage}
+ 		where idx=#{idx}</if>
+	 <if test="inimage ==null and outimage !=null">
+	 	update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+ 		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location},
+ 		outimage=#{outimage}
+ 		where idx=#{idx}</if>
+	 <if test="inimage==null and outimage==null">
+	 	update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
  		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location}
+ 		where idx=#{idx}</if>
+	 <if test="inimage!=null and outimage!=null">
+ 		update cafe set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+ 		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location},
+ 		outimage=#{outimage},inimage=#{inimage}
  		where idx=#{idx}
+ 	</if>
+ 	</update>
+ 	
+ 	<update id="gradeup" parameterType="Cafe">
+ 		update cafe set grade=#{grade} where idx=#{idx}
+ 	
  	</update>
 
 </mapper>

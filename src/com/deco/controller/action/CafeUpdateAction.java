@@ -17,10 +17,11 @@ public class CafeUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");	
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		
 		CafeDao dao = CafeDao.getInstance();
-		Cafe dto= dao.getOne(idx);
 		
+		System.out.println(idx);
+		Cafe dto= dao.getOne(idx);
+		System.out.println(dto);
 		request.setAttribute("cafe", dto);
 		
 		

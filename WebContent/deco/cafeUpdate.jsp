@@ -30,19 +30,19 @@
 
 <section>
 <hr>
-<form  method="post" action="edit.deco" >
+<form  method="post" action="edit.deco" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
-<input type="hidden" name="idx"value="${cafe.idx}">
+<input type="hidden" name="idx" value="${cafe.idx}">
 <ul > 
 	<li> 
 	 <ul >
 	 	<li>지역</li>
-	 	<li> <input type ="text" name="location"value="${cafe.location}" required="required"> </li>
+	 	<li> <input type ="text" name="location" value="${cafe.location}" required="required"> </li>
 	 	<li>상호</li>
-	 	<li><input type ="text" name="name"value="${cafe.name}" required="required"></li>
+	 	<li><input type ="text" name="name" value="${cafe.name}" required="required"></li>
 	 	<li>평점</li>
-	 	<li><input type ="text" name="grade"value="${cafe.grade}" required="required"> </li>
+	 	<li><input type ="text" name="grade" value="${cafe.grade}" required="required"> </li>
 	 </ul>
 	</li>
 	<li> 
@@ -59,8 +59,10 @@
 	</li>
 	<li> 
 	 <ul >
+	 <li>수정 전 사진</li>
 	  <li> 
-	 	<img alt="cafe" src="">
+	 	<img alt="cafe" src="/image/${cafe.inimage}">
+	 	<img alt="cafe" src="/image/${cafe.outimage}">
 	  </li>
 	 </ul>
 	</li>
@@ -70,6 +72,30 @@
 		<li>영업시간</li>
 		<li><input type ="text" name="opentime"value="${cafe.opentime}" required="required"></li>
 		<li><input type ="text" name="closetime"value="${cafe.closetime}" required="required"></li>
+	 </ul>
+	</li>
+	<li> 
+	 <ul> 
+	 	<li>수정후 외부 사진</li>
+	 	 <li> 
+ 		<input type="file" name="outimage" accept="image/*" placeholder="이미지 파일을 선택해주세요"
+ 		onchange="setThumbnail(event);"> 
+ 	</li>
+ 	<li> 
+ 	 <div id="image_container"></div>
+ 	</li>
+	 </ul>
+	</li>
+	<li> 
+	 <ul> 
+	 	<li>수정후 내부 사진</li>
+	 	 <li> 
+ 		<input type="file" name="inimage" accept="image/*" placeholder="이미지 파일을 선택해주세요"
+ 		onchange="setThumbnail2(event);"> 
+ 	</li>
+ 	<li> 
+ 	 <div id="image_container2"></div>
+ 	</li>
 	 </ul>
 	</li>
 	<li> 
@@ -95,8 +121,24 @@
 </form>
 </section>
 
-
-
+<script type="text/javascript">
+function setThumbnail(event) {
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container").appendChild(img); }; 
+	reader.readAsDataURL(event.target.files[0]); }	
+	
+function setThumbnail2(event) {
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container2").appendChild(img); }; 
+	reader.readAsDataURL(event.target.files[0]); }	
+	
+</script>
 
 </body>
 </html>

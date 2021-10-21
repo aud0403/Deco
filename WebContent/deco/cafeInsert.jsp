@@ -9,7 +9,7 @@
 </head>
 <body>
 		<h3>카페 추천지 등록</h3>
-		<form  method="post" action="cafeInsertAction.deco" >
+		<form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" >
 		<table>
 		<tr>
 					<td><label>카페 이름</label></td>
@@ -53,8 +53,16 @@
  					class="input"  name ="content" required></textarea></td>
 				</tr>
 				<tr>
-					<td><label>사진 등록</label></td>
-					<td><input type="file" name="pic" accept="image/*" placeholder="이미지 파일을 선택해주세요"></td>
+					<td><label>외부 사진 등록</label></td>
+					<td><input type="file" name="outpic" accept="image/*" placeholder="외부 이미지 파일을 선택해주세요"
+					onchange="setThumbnail(event);"></td>
+					<td> <div id="image_container"></div></td>
+				</tr>
+				<tr>
+					<td><label>외부 사진 등록</label></td>
+					<td><input type="file" name="inpic" accept="image/*" placeholder="내부 이미지 파일을 선택해주세요"
+					onchange="setThumbnail(event);"></td>
+					<td><div id="image_container"></div></td>
 				</tr>
 				
 				<tr> 
@@ -70,6 +78,17 @@
 				
 
 </form>
+<script type="text/javascript">
+function setThumbnail(event) {
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container").appendChild(img); }; 
+	reader.readAsDataURL(event.target.files[0]); }	
+	
+</script>
+
 				
 </body>
 </html>
