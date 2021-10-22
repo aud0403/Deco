@@ -17,13 +17,14 @@ public class CafeUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");	
 		
 		int idx = Integer.parseInt(request.getParameter("idx"));
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
 		CafeDao dao = CafeDao.getInstance();
 		
 		System.out.println(idx);
 		Cafe dto= dao.getOne(idx);
 		System.out.println(dto);
 		request.setAttribute("cafe", dto);
-		
+		request.setAttribute("page", pageNo);
 		
 		ActionForward foward =new ActionForward();
 		foward.isRedirect = false;

@@ -1,6 +1,7 @@
 package com.deco.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -18,10 +19,10 @@ public class CafeDao {
 	
 	SqlSessionFactory factory = SqlSessionBean.getSessionFactory();
 	
-	public List<Cafe> getList() {
+	public List<Cafe> getList(Map<String, Integer> map) {
 		List<Cafe> list = null;
 		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("cafe.getList");
+		list = mapper.selectList("cafe.getList",map);
 		mapper.close();
 		return list;
 	}
@@ -56,10 +57,14 @@ public class CafeDao {
 		
 	}
 	
+	public int getCount() {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("cafe.getCount");  
+		mapper.close();     
+		return cnt;
 	
 	
-	
-	
+	}
 	
 	
 	

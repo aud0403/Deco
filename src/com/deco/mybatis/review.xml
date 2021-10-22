@@ -25,9 +25,6 @@
  	<delete id="delete" parameterType="int">
 		delete from review where idx=#{idx}
 	</delete>
-	<select id="sum" resultType="int">
-		select sum(grade) from review
-	</select>
 	
 </mapper>
 

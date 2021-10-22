@@ -33,7 +33,7 @@
 <hr>
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
-<form action="cafeUpdate.deco"method="post">
+<form action="cafeUpdate.deco?page=${page}"method="post">
 <input type="hidden" value="${cafe.idx}" name="idx">
 <ul > 
 	<li> 
@@ -90,13 +90,13 @@
 	<input type="submit" value="수정" class="button small">
 	<input type="reset" value="취소" class="button small">
 	<input type="button" onclick="location.href='home.jsp'" value="메인화면" class="button small">
-	<input type="button" onclick="location.href='list.deco'" value="리스트" class="button small">
+	<input type="button" onclick="location.href='list.deco?page=${page}'" value="리스트" class="button small">
 </div>
  </form>
 </div>
 <!--  -------------------------------------------------------  -->
 <!-- 리뷰 -->
-<form action="review.deco"method="post" enctype="multipart/form-data">
+<form action="review.deco?page=${page}"method="post" enctype="multipart/form-data">
 	<input type="hidden" value="${cafe.idx}" name="idx">  <!-- 이 값이 에요?  넵 -->
 	<input type="hidden" value="cafe" name="category">
 	<hr class="line">
@@ -151,7 +151,7 @@
    	  <li> 
    	   <pre> ${re.content}</pre>
    	  </li>
-   	<li><a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}')">삭제</a></li>
+   	<li><a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}','${page}')">삭제</a></li>
    	</ul>
    </li>
    <li> 
@@ -169,12 +169,12 @@
 
 
 <script type="text/javascript">
-function deleteCmt(reidx,idx,regrade){
+function deleteCmt(reidx,idx,regrade,page){
 		console.log(reidx);console.log(idx);
 		
 		const yn = confirm('댓글 삭제하시겠습니까?'+regrade);
 		if(yn){
-			location.href='review.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade;
+			location.href='review.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page;
 		}else{
 			alert('댓글 삭제 취소합니다.');
 		}

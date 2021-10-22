@@ -18,6 +18,8 @@
 		<li>${vo.nickname }</li>
 		<li>${vo.content }</li>
 		<li>${vo.grade }</li>
+		<li>${vo.category }</li>
+		<li> <a href="cafe.deco?idx=${vo.refidx}">글 보러 가기 </a> </li>
 	</ul>
 	</c:forEach>
 	

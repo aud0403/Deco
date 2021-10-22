@@ -4,12 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="cafe">
-	<select id="getList" resultType="Cafe">
-		select * from cafe order by grade desc
-	</select>
+	
 	<select id="getOne" resultType="Cafe" parameterType="int">
 		select * from cafe where idx = #{idx}
 	</select>
+	
+	<select id="getCount" resultType="int">
+		select count(*) from cafe
+	</select>
+	
+	<select id="getList" resultType="Cafe" parameterType="java.util.Map">
+		select * from cafe order by grade desc limit #{startNo},#{pageSize}
+	</select>
+	
+	
 	<insert id="insert" parameterType="Cafe">
 		INSERT INTO cafe ( name, content, phone, addr,menu,opentime,closetime,grade,location,inimage,outimage)
 		VALUES (#{name},#{content},#{phone},#{addr},#{menu},#{opentime},#{closetime},#{grade},#{location},#{inimage},#{outimage})

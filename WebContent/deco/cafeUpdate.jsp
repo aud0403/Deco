@@ -30,7 +30,7 @@
 
 <section>
 <hr>
-<form  method="post" action="edit.deco" enctype="multipart/form-data" >
+<form  method="post" action="edit.deco?page=${page}" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
 <input type="hidden" name="idx" value="${cafe.idx}">
@@ -114,7 +114,7 @@
 <div>
 	<input type="submit" value="저장" class="">
 	<input type="reset" value="다시쓰기" class="">
-	<input type="button" value="목록" onclick="location.href='list.deco'" class="">
+	<input type="button" value="목록" onclick="location.href='list.deco?page=${page}'" class="">
 	
 </div>
 </div>

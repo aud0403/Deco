@@ -54,11 +54,5 @@ public class ReviewDao {
 		mapper.commit();
 		mapper.close();
 	}
-	public int sum() {
-		SqlSession mapper = factory.openSession();
-		int sum=mapper.selectOne("review.sum");
-		mapper.close();
-		return sum;
-	}
 
 }

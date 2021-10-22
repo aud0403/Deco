@@ -28,6 +28,8 @@ public class ReviewAction implements Action {
 		String path = "c:\\upload";
 		int size = 10 * 1024 * 1024;
 
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
+		
 		if (request.getParameter("del") != null) {
 			int reidx = Integer.parseInt(request.getParameter("reidx")); // 이건 삭제할 댓글 idx
 			refidx = Integer.parseInt(request.getParameter("idx"));
@@ -100,7 +102,7 @@ public class ReviewAction implements Action {
 
 		ActionForward foward = new ActionForward();
 		foward.isRedirect = true;
-		foward.url = "cafe.deco?idx=" + refidx;
+		foward.url = "cafe.deco?idx=" + refidx+"&page="+pageNo;
 
 		return foward;
 	}

@@ -19,7 +19,7 @@ public class ModifyAction implements Action {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
 		String path="c:\\upload/cafe";
 		int idx =0;
 	      int size=10*1024*1024; 
@@ -68,7 +68,7 @@ public class ModifyAction implements Action {
 		
 		ActionForward foward =new ActionForward();
 		foward.isRedirect = true;
-		foward.url="cafe.deco?idx="+idx;
+		foward.url="cafe.deco?idx="+idx+ "&page="+pageNo;
 		return foward;
 		
 	}
