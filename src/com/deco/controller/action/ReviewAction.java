@@ -84,7 +84,7 @@ public class ReviewAction implements Action {
 				List<Review> reList = dao.getReview(refidx);
 				if(reList.size()!=1) {
 				System.out.println(cgrade + "/" + grade + "/" + reList.size());
-				cgrade = (double) ((cgrade * (reList.size() - 1) + grade) / reList.size());
+				cgrade = (double) ((cgrade * reList.size()  + grade) / (reList.size()+1));
 				System.out.println(cgrade);
 				}else {
 				cgrade= (double)(cgrade+grade)/2;
