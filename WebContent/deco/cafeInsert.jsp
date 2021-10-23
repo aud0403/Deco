@@ -8,6 +8,8 @@
 <title>데이터 업로드 view</title>
 </head>
 <body>
+<%@ include file="../top.jsp" %>
+<section>
 		<h3>카페 추천지 등록</h3>
 		<form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" >
 		<table>
@@ -78,6 +80,8 @@
 				
 
 </form>
+</section>
+<%@ include file="../bottom.jsp" %>
 <script type="text/javascript">
 function setThumbnail(event) {
 	var reader = new FileReader(); 
@@ -89,6 +93,5 @@ function setThumbnail(event) {
 	
 </script>
 
-				
 </body>
 </html>

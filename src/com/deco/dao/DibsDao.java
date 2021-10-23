@@ -1,5 +1,7 @@
 package com.deco.dao;
 
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -31,6 +33,15 @@ public class DibsDao {
 		mapper.close();
 		return cafe;
 	}
+	
+	public void updateCafeDibs(Map<String,String> map) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("updateCafeDibs", map);
+		mapper.commit();
+		mapper.close();
+	}
+	
+	
 	
 	
 }

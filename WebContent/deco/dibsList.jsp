@@ -8,21 +8,14 @@
 <title>DECO 당신의 하루를 꾸미다.</title>
 </head>
 <body>
-	<div>
-		<c:if test="${sessionScope.user != null }">
-			<!-- 로그인된 상태 -->
-			<br>${user.name }(${user.email })  님 반갑습니다. <br>
-			<a href="logout.deco" class="menu">로그아웃</a>
-			<a href="" >마이페이지</a>
-		</c:if>
-		<h1>찜목록</h1>
-	</div>
+<%@ include file="../top.jsp" %>
+<section>
 	<div>
 		<ul>
-			<li><a>카페</a></li>
-			<li><a>맛집</a></li>
-			<li><a>공연/전시</a></li>
-			<li><a>체험/이색데이트</a></li>
+			<li><a href="">카페</a></li>
+			<li><a href="">맛집</a></li>
+			<li><a href="">공연/전시</a></li>
+			<li><a href="">체험/이색데이트</a></li>
 		</ul>
 	</div>
 	<div>
@@ -33,14 +26,15 @@
 		    	<li>평점 : ${vo.grade }</li>
 		       	<li>${vo.content }</li>
 		       	<li>메뉴 : ${vo.menu }</li>
-		       	<li><img alt="cafe-out" src="/image/${vo.outimage}"> </li>
+		       	<li><img alt="cafe-out" src="/image/${vo.outimage}" width="150px" height="150px"> </li>
 		       	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
 		       	<li>연락처 : ${vo.phone }</li>
 		       	<li>주소 : ${vo.addr }</li>
 		    </ul>
 		</c:forEach>
 	</div>
-	
+</section>
+<%@ include file="../bottom.jsp" %>	
 </body>
 </html>
 

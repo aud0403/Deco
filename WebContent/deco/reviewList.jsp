@@ -8,21 +8,21 @@
 </head>
 <title>deco ::리뷰목록</title>
 <body>
-<div>
-</div>
+<%@ include file="../top.jsp" %>
+<section>
 	<div>
-	
+	<form action="review.deco" method="get">
 	<h3>리뷰리스트</h3>
 	<c:forEach var="vo" items="${ReviewList}">
 	<ul>
 		<li>${vo.nickname }</li>
 		<li>${vo.content }</li>
 		<li>${vo.grade }</li>
-		<li>${vo.category }</li>
-		<li> <a href="cafe.deco?idx=${vo.refidx}">글 보러 가기 </a> </li>
 	</ul>
 	</c:forEach>
-	
+	</form>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

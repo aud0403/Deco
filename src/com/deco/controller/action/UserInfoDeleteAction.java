@@ -1,26 +1,29 @@
 package com.deco.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
-import com.deco.dto.Cafe;
+import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
+import com.deco.dto.Users;
 
-public class CafeUpdateAction implements Action {
+public class UserInfoDeleteAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		ActionForward forward = new ActionForward();
-
+		// 세션 만료시 home_hogin.deco로 이동
 		HttpSession session = request.getSession();
 		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		ActionForward forward = new ActionForward();
 		if(sdto==null) {
 			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
 			request.setAttribute("url", "home_login.deco");
@@ -29,20 +32,19 @@ public class CafeUpdateAction implements Action {
 			return forward;
 		}
 		
-		request.setCharacterEncoding("UTF-8");	
+		request.setCharacterEncoding("UTF-8");
 		
-		int idx = Integer.parseInt(request.getParameter("idx"));
-		CafeDao dao = CafeDao.getInstance();
-		
-		System.out.println(idx);
-		Cafe dto= dao.getOne(idx);
-		System.out.println(dto);
-		request.setAttribute("cafe", dto);
-		
-		
+	      UsersDao dao = UsersDao.getInstance();
+	     
+	      	int idx = sdto.getIdx();
+	  		dao.delete(idx);
+ 		
+	      System.out.println(idx);
+	
+	      request.setAttribute("message", "회원탈퇴 되셨습니다 홈으로 이동합니다.");
+	      request.setAttribute("url","./" );
 		forward.isRedirect = false;
-		forward.url="deco/cafeUpdate.jsp";
+		forward.url="error/alert.jsp";
 		return forward;
 	}
-
 }

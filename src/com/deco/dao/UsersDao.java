@@ -22,7 +22,7 @@ public class UsersDao {
 	
 	public Users getUser(int idx) {
 		SqlSession mapper = factory.openSession();
-		Users users = mapper.selectOne("getUser",idx);
+		Users users = mapper.selectOne("getUser", idx);
 		mapper.close();
 		return users;
 	}
@@ -50,7 +50,12 @@ public class UsersDao {
 		return dto;
 	}
 	
-	
+	public void delete(int idx) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.delete", idx);
+		mapper.commit();
+		mapper.close();
+	}
 	
 	
 }

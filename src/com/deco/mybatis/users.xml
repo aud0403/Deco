@@ -15,7 +15,7 @@
   
   <!-- 일단은 <나이, 전화번호> 만 수정 !! -->
   <update id="update" parameterType="Users">
-  	update users set age=#{age},phone=#{phone} where idx=#{idx} 
+  	update users set age=#{age},phone=#{phone},addr=#{addr} where idx=#{idx} 
   </update>
   
   
@@ -25,5 +25,8 @@
 		and password = #{password}
 	</select>
   
+  <delete id="delete" parameterType="Users">
+  	delete from users where idx = #{idx}
+  </delete>
   
 </mapper>

@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
-import com.deco.dto.Cafe;
+import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
+import com.deco.dto.Users;
 
-public class CafeUpdateAction implements Action {
-
+public class UserInfoAction implements Action {
+ //회원정보 불러오기 (쓰기는 불가능하고 읽기만 가능)
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -29,20 +29,17 @@ public class CafeUpdateAction implements Action {
 			return forward;
 		}
 		
-		request.setCharacterEncoding("UTF-8");	
 		
-		int idx = Integer.parseInt(request.getParameter("idx"));
-		CafeDao dao = CafeDao.getInstance();
-		
+		UsersDao dao = UsersDao.getInstance();
+		int idx = sdto.getIdx();
 		System.out.println(idx);
-		Cafe dto= dao.getOne(idx);
-		System.out.println(dto);
-		request.setAttribute("cafe", dto);
+		Users user = dao.getUser(idx);
+		System.out.println(user);
 		
-		
+		request.setAttribute("dto", user);
 		forward.isRedirect = false;
-		forward.url="deco/cafeUpdate.jsp";
+		forward.url="deco/userInfo.jsp";
 		return forward;
+		
 	}
-
 }

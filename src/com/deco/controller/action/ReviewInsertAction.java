@@ -6,19 +6,34 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.deco.dao.CafeDao;
 import com.deco.dao.ReviewDao;
 import com.deco.dto.Cafe;
 import com.deco.dto.Review;
+import com.deco.dto.SessionDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class ReviewAction implements Action {
+public class ReviewInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		ActionForward forward = new ActionForward();
+
+		HttpSession session = request.getSession();
+		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		if(sdto==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
+			request.setAttribute("url", "home_login.deco");
+			forward.isRedirect = false;
+			forward.url="error/alert.jsp";
+			return forward;
+		}
+		
 		request.setCharacterEncoding("UTF-8");
 		ReviewDao dao = ReviewDao.getInstance();
 		CafeDao Cdao = CafeDao.getInstance();
@@ -28,8 +43,6 @@ public class ReviewAction implements Action {
 		String path = "c:\\upload";
 		int size = 10 * 1024 * 1024;
 
-		int pageNo =  Integer.parseInt(request.getParameter("page"));
-		
 		if (request.getParameter("del") != null) {
 			int reidx = Integer.parseInt(request.getParameter("reidx")); // 이건 삭제할 댓글 idx
 			refidx = Integer.parseInt(request.getParameter("idx"));
@@ -84,7 +97,7 @@ public class ReviewAction implements Action {
 				List<Review> reList = dao.getReview(refidx);
 				if(reList.size()!=1) {
 				System.out.println(cgrade + "/" + grade + "/" + reList.size());
-				cgrade = (double) ((cgrade * reList.size()  + grade) / (reList.size()+1));
+				cgrade = (double) ((cgrade * (reList.size() - 1) + grade) / reList.size());
 				System.out.println(cgrade);
 				}else {
 				cgrade= (double)(cgrade+grade)/2;
@@ -100,11 +113,10 @@ public class ReviewAction implements Action {
 			}
 		}
 
-		ActionForward foward = new ActionForward();
-		foward.isRedirect = true;
-		foward.url = "cafe.deco?idx=" + refidx+"&page="+pageNo;
+		forward.isRedirect = true;
+		forward.url = "cafe.deco?idx=" + refidx;
 
-		return foward;
+		return forward;
 	}
 
 }

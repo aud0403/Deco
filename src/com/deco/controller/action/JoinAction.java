@@ -14,7 +14,7 @@ import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
 
-public class MemberAction implements Action {
+public class JoinAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -47,7 +47,7 @@ public class MemberAction implements Action {
 		dao.insert(dto);
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;
-		forward.url="deco/memberView.jsp";
+		forward.url="home_login.deco";
 		return forward;
 	}
 }

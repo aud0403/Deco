@@ -15,13 +15,18 @@ import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
-import com.deco.controller.action.ListAction;
+import com.deco.controller.action.DibsUpdateAction;
+import com.deco.controller.action.HomeLoginAction;
+import com.deco.controller.action.CafeListAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
-import com.deco.controller.action.MemberAction;
-import com.deco.controller.action.ModifyAction;
-import com.deco.controller.action.ReviewAction;
+import com.deco.controller.action.JoinAction;
+import com.deco.controller.action.CafeModifyAction;
+import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
+import com.deco.controller.action.UserInfoAction;
+import com.deco.controller.action.UserInfoModifyAction;
+import com.deco.controller.action.UserInfoUpdateAction;
 
 @WebServlet("*.deco")
 public class FrontController extends HttpServlet {
@@ -49,44 +54,61 @@ public class FrontController extends HttpServlet {
 //		forward.setUrl("./");
 		String url="./";
 		
-		if(spath.equals("/list.deco")) {
-			Action action = new ListAction();
+		if(spath.equals("/home_login.deco")) {			//메인
+			Action action = new HomeLoginAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/loginAction.deco")) {
+		}else if(spath.equals("/home.deco")) {		// 로그인 후 홈
+			forward = new ActionForward(false, "home.jsp");
+		}else if(spath.equals("/login.deco")) {
 			Action action = new LoginAction();
 			forward = action.execute(request, response);
 		}else if(spath.equals("/logout.deco")) {
 			Action action = new LogoutAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/login.deco")) {
-			forward = new ActionForward(false, "home_login.jsp");
+		}else if(spath.equals("/join.deco")) {		// 회원가입
+			forward = new ActionForward(false, "deco/join.jsp");
+		}else if(spath.equals("/mypage.deco")) {
+			forward = new ActionForward(false, "deco/mypage.jsp");
+		}else if(spath.equals("/userInfo.deco")) {	// 회원 정보 받아서 userInfo.jsp
+			Action action = new UserInfoAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/userInfoUpdate.deco")) {	// 회원 정보 받아서 userInfoUpdate.jsp
+			Action action = new UserInfoUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/userInfoModify.deco")) {	// 회원 정보 수정 후 userInfo.jsp
+			Action action = new UserInfoModifyAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/cafeList.deco")) {		// 카페 목록 검색
+			Action action = new CafeListAction();
+			forward = action.execute(request, response);
 		}else if(spath.equals("/cafe.deco")) {
 			Action action = new CafeAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/member.deco")) {
-			forward = new ActionForward(false, "deco/memberView.jsp");
-		}else if(spath.equals("/memberAction.deco")) {
-			Action action = new MemberAction();
+		}else if(spath.equals("/joinAction.deco")) {	// 회원가입 완료 후 home_login.deco 로
+			Action action = new JoinAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/dibsList.deco")) {
+		}else if(spath.equals("/dibsList.deco")) {		// mypage에서 찜목록
 			Action action = new DibsListAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/cafeUpdate.deco")) {
+		}else if(spath.equals("/cafeUpdate.deco")) {	// 카페 정보 수정 -> cafeUpdate.jsp로
 			Action action = new CafeUpdateAction();
 			forward = action.execute(request, response);
-		}else if(spath.contentEquals("/edit.deco")){
-			Action action = new ModifyAction();
+		}else if(spath.contentEquals("/cafeModify.deco")){	//카페 정보 수정하고 다시 cafe.jsp로
+			Action action = new CafeModifyAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/cafeInsert.deco")) {
+		}else if(spath.equals("/cafeInsert.deco")) {	// 카페 업체 등록 -> cafe.jsp로
 			forward = new ActionForward(false,"deco/cafeInsert.jsp");
-		}else if(spath.equals("/cafeInsertAction.deco")) {
+		}else if(spath.equals("/cafeInsertAction.deco")) {	// 카페 업ㅈ체 등록 완료 후 -> home.deco
 			Action action = new CafeInsertAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/reviewList.deco")) {
+		}else if(spath.equals("/reviewList.deco")) {	// 리뷰목록
 			Action action = new ReviewListAction();
 			forward = action.execute(request, response);
-		}else if(spath.equals("/review.deco")) {
-			Action action = new ReviewAction();
+		}else if(spath.equals("/reviewInsert.deco")) {	// 리뷰작성(추가) 하고 -> cafe.jsp로
+			Action action = new ReviewInsertAction();	// 여기서 카테고리 달라도 if문으로 리뷰 작성되게 구연할것!!
+			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new DibsUpdateAction();
 			forward = action.execute(request, response);
 		}
 		

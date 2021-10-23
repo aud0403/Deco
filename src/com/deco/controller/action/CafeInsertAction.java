@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.deco.dao.CafeDao;
 import com.deco.dto.Cafe;
+import com.deco.dto.SessionDto;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -16,6 +18,20 @@ public class CafeInsertAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		ActionForward forward = new ActionForward();
+
+		HttpSession session = request.getSession();
+		SessionDto sdto = (SessionDto)session.getAttribute("user");
+		if(sdto==null) {
+			request.setAttribute("message", "세션이 만료되었습니다. 로그인 화면으로 이동합니다.");
+			request.setAttribute("url", "home_login.deco");
+			forward.isRedirect = false;
+			forward.url="error/alert.jsp";
+			return forward;
+		}
+		
+		
 		request.setCharacterEncoding("UTF-8"); 
 		
 		CafeDao dao= CafeDao.getInstance();
@@ -59,10 +75,9 @@ public class CafeInsertAction implements Action {
 		   e.printStackTrace();
 	}
 		
-		ActionForward foward =new ActionForward();
-		foward.isRedirect = false;
-		foward.url="list.deco";
-		return foward;
+		forward.isRedirect = false;
+		forward.url="home.deco";
+		return forward;
 	}
 
 }

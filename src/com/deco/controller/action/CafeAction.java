@@ -18,10 +18,8 @@ public class CafeAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		CafeDao dao= CafeDao.getInstance();
-		int pageNo;
+	
 		int idx = Integer.parseInt(request.getParameter("idx"));
-		if(request.getParameter("page")==null) pageNo=1;
-		else pageNo = Integer.parseInt(request.getParameter("page"));
 		
 		
 		Cafe ca=dao.getOne(idx);
@@ -30,8 +28,7 @@ public class CafeAction implements Action {
 		List<Review> reList = rdao.getReview(idx);
 		request.setAttribute("review", reList);
 		
-		request.setAttribute("cafe", ca); 
-		request.setAttribute("page", pageNo);
+		request.setAttribute("cafe", ca);    
 		
 		ActionForward foward =new ActionForward();
 		foward.isRedirect = false;

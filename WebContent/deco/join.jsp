@@ -31,6 +31,8 @@
 </script>
 </head>
 <body>
+<%@ include file="../top.jsp" %>
+<section>
 	<div style="width: 70%; margin: auto;">
 		<h3>회원 등록</h3>
 		<form action="memberAction.deco" name="frmReg" method="post">
@@ -47,7 +49,24 @@
 				</tr>
 				<tr>
 					<td><label>이메일</label></td>
-					<td><input type="email" name="email" placeholder="email을 입력하세요"></td>
+					<td>
+					<input type="email" name="email" id="email_etc" placeholder="email을 입력하세요" disabled="disabled">
+					<input type="text" name="email" id ="email_choice" placeholder="email을 입력하세요">
+					@<select name="selectEmail" id="selectEmail">
+					<option value="직접입력">직접입력</option>
+					<option value="naver.com" selected>naver.com</option>
+					<option value="hanmail.net">hanmail.net</option> 
+					<option value="hotmail.com">hotmail.com</option> 
+					<option value="nate.com">nate.com</option> 
+					<option value="yahoo.co.kr">yahoo.co.kr</option> 
+					<option value="empas.com">empas.com</option> 
+					<option value="dreamwiz.com">dreamwiz.com</option> 
+					<option value="freechal.com">freechal.com</option> 
+					<option value="lycos.co.kr">lycos.co.kr</option> 
+					<option value="korea.com">korea.com</option> 
+					<option value="gmail.com">gmail.com</option> 
+					<option value="paran.com">paran.com</option></select>
+					</td>
 				</tr>
 				<tr>
 					<td><label>성별</label></td>
@@ -92,14 +111,18 @@
 			</table>
 		</form>
 	</div>
+</section>
+<%@ include file="../bottom.jsp" %>
 	<script type="text/javascript">
-	document.getElementById("addr_select").addEventListener("change",function(){
-		if(this.value=="기타"){ //this는 getElementById("addr_select")요소
+	document.getElementById("selectEmail").addEventListener("change",function(){
+		if(this.value=="직접입력"){ //this는 getElementById("addr_select")요소
 //			document.getElementById("addr_id").style.display="inline-block";
-			document.frmReg.addr_etc.disabled=false;
+			document.frmReg.email_choice.disabled=true;
+			document.frmReg.email_etc.disabled=false;
 		}else {
 //			document.getElementById("addr_id").style.display="none";
-			document.frmReg.addr_etc.disabled=true;
+			document.frmReg.email_choice.disabled=false;
+			document.frmReg.email_etc.disabled=true;
 		}
 		
 	});
