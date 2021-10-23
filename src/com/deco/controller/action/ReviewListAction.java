@@ -30,7 +30,7 @@ public class ReviewListAction implements Action {
 		
 		ReviewDao dao = ReviewDao.getInstance();
 		
-		List<Review> list = dao.getList();
+		List<Review> list = dao.reviewList(sdto.getNickname());
 		request.setAttribute("ReviewList", list);
 		
 		forward.isRedirect = false;

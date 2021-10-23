@@ -34,6 +34,14 @@ public class ReviewDao {
 		mapper.close();
 		return list;
 	}
+	public List<Review> reviewList(String nickname){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.reviewList",nickname);
+		mapper.close();
+		return list;
+	}
 	
 	public Cafe getOne(int idx) {
 		SqlSession mapper = factory.openSession();

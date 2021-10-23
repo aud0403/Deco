@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.DibsDao;
 import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
@@ -35,7 +36,8 @@ public class UserInfoDeleteAction implements Action {
 		request.setCharacterEncoding("UTF-8");
 		
 	      UsersDao dao = UsersDao.getInstance();
-	     
+	      DibsDao ddao = DibsDao.getInstance();
+	      ddao.delete(sdto.getNickname());
 	      	int idx = sdto.getIdx();
 	  		dao.delete(idx);
  		

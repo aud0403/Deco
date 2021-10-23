@@ -64,7 +64,7 @@
 <section>
 	<div style="width: 70%; margin: auto;">
 		<h3>회원 등록</h3>
-		<form action="memberAction.deco" name="frmReg" method="post">
+		<form action="joinAction.deco" name="frmReg" method="post">
 			<table style="width: 100%">
 				<tr>
 					<td><label>이름</label></td>

@@ -15,7 +15,9 @@
  	<select id="getReview" parameterType="int" resultType="Review">
 		select * from review where refidx= #{refdix}
 	</select>
- 	
+ 	<select id="reviewList" resultType="Review" parameterType="String">
+ 		select *from review where nickname=#{nickname};
+ 	</select>
  
  	<insert id="insert" parameterType="Review">
  		insert into review (nickname, grade, content, category,refidx,imgfile)

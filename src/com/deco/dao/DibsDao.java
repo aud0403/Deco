@@ -40,7 +40,12 @@ public class DibsDao {
 		mapper.commit();
 		mapper.close();
 	}
-	
+	public void delete(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("dibsDelete", nickname);
+		mapper.commit();
+		mapper.close();
+	}
 	
 	
 	
