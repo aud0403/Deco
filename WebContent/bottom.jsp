@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./css/flexbox2.css?v=3">
+<link rel="stylesheet" href="css/flexbox2.css?v=3">
 </head>
 
 <footer class="footer">

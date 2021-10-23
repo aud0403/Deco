@@ -46,10 +46,13 @@ public class ReviewInsertAction implements Action {
 		if (request.getParameter("del") != null) {
 			int reidx = Integer.parseInt(request.getParameter("reidx")); // 이건 삭제할 댓글 idx
 			refidx = Integer.parseInt(request.getParameter("idx"));
-
+			String renickname=request.getParameter("renickname");
+			Double grade= Double.parseDouble(request.getParameter("regrade"));
+			System.out.println(renickname);
+			System.out.println(sdto.getNickname());
 			
-			  Double grade= Double.parseDouble(request.getParameter("regrade"));
-			  
+			
+			if(sdto.getNickname().equals(renickname)) {
 			  
 			  Cafe ca=Cdao.getOne(refidx); cgrade=ca.getGrade();
 			  System.out.println(cgrade);
@@ -66,6 +69,16 @@ public class ReviewInsertAction implements Action {
 				Cdao.gradeup(cdto);
 			 
 			dao.delete(reidx);
+			
+			 }else {
+		    request.setAttribute("message", "본인 글이 아니어서 삭제가 불가능합니다.");
+			 request.setAttribute("url", "cafe.deco?idx=" + refidx);
+			 forward.isRedirect = false; 
+			 forward.url="error/alert.jsp"; 
+			 return forward;
+			 
+			 
+			 }
 		} else {
 			try {
 				MultipartRequest multi_request = new MultipartRequest(request, path, size, "UTF-8",

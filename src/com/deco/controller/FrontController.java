@@ -25,6 +25,7 @@ import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
 import com.deco.controller.action.UserInfoAction;
+import com.deco.controller.action.UserInfoDeleteAction;
 import com.deco.controller.action.UserInfoModifyAction;
 import com.deco.controller.action.UserInfoUpdateAction;
 
@@ -86,6 +87,9 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/joinAction.deco")) {	// 회원가입 완료 후 home_login.deco 로
 			Action action = new JoinAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/userInfoDelete.deco")) {	// 회원 탈퇴
+			Action action = new UserInfoDeleteAction();
 			forward = action.execute(request, response);
 		}else if(spath.equals("/dibsList.deco")) {		// mypage에서 찜목록
 			Action action = new DibsListAction();
