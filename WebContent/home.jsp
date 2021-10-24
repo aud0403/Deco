@@ -8,7 +8,7 @@
 <title>home 화면</title>
 </head>
 <body>
-<%@ include file="../top.jsp" %>
+<%@ include file="top.jsp" %>
 <hr>
 <section>
 <div width="100vw" height="40vh">
@@ -19,6 +19,6 @@
 </div>
 </section>
 <hr>
-<%@ include file="../bottom.jsp" %>
+<%@ include file="bottom.jsp" %>
 </body>
 </html>

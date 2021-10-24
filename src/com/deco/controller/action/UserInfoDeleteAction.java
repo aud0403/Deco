@@ -39,6 +39,8 @@ public class UserInfoDeleteAction implements Action {
 	      DibsDao ddao = DibsDao.getInstance();
 	      ddao.delete(sdto.getNickname());
 	      	int idx = sdto.getIdx();
+	      	ddao.delete(sdto.getNickname());
+	      	dao.reviesDelete(sdto.getNickname());
 	  		dao.delete(idx);
  		
 	      System.out.println(idx);

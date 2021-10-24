@@ -33,6 +33,12 @@ public class UsersDao {
 		mapper.commit();
 		mapper.close();
 	}
+	public void dibsinsert(String nickname ) {
+		SqlSession mapper = factory.openSession();
+		mapper.insert("users.dibsinsert", nickname);
+		mapper.commit();
+		mapper.close();
+	}
 	
 	public void update(Users users) {
 		SqlSession mapper = factory.openSession();
@@ -53,6 +59,18 @@ public class UsersDao {
 	public void delete(int idx) {
 		SqlSession mapper = factory.openSession();
 		mapper.delete("users.delete", idx);
+		mapper.commit();
+		mapper.close();
+	}
+	public void dibsDelete2(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.dibsDelete2", nickname);
+		mapper.commit();
+		mapper.close();
+	}
+	public void reviesDelete(String nickname) {
+		SqlSession mapper = factory.openSession();
+		mapper.delete("users.reivewDelete", nickname);
 		mapper.commit();
 		mapper.close();
 	}

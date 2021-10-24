@@ -47,6 +47,8 @@ public class JoinAction implements Action {
 		
 		UsersDao dao = UsersDao.getInstance();
 		dao.insert(dto);
+		dao.dibsinsert(nickname);
+		
 		ActionForward forward = new ActionForward();
 		forward.isRedirect = false;
 		forward.url="home_login.deco";

@@ -31,10 +31,10 @@
 					<td>${dto.email }</td>
 				</tr>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
-				</tr>
+				<tr>
 				    <td>성별</td>
 					<td>${dto.gender }</td>
-					<tr>
+					
 					<td>나이</td>
 					<td>${dto.age }</td>
 					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
