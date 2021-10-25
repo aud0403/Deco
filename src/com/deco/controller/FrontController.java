@@ -1,6 +1,6 @@
 package com.deco.controller;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,6 +18,12 @@ import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
+import com.deco.controller.action.EtcAction;
+import com.deco.controller.action.EtcInsertAction;
+import com.deco.controller.action.EtcListAction;
+import com.deco.controller.action.EtcModifyAction;
+import com.deco.controller.action.EtcReviewInsertAction;
+import com.deco.controller.action.EtcUpdateAction;
 import com.deco.controller.action.FoodAction;
 import com.deco.controller.action.FoodInsertAction;
 import com.deco.controller.action.FoodListAction;
@@ -147,26 +153,46 @@ public class FrontController extends HttpServlet {
 			Action action = new FoodReviewInsertAction();
 			forward = action.execute(request, response);
 		  }else if(spath.equals("/showsList.deco")) {      // 식당목록 검색
-		         Action action = new ShowsListAction();
-		         forward = action.execute(request, response);
-		      }else if(spath.equals("/shows.deco")) {
-		         Action action = new ShowsAction();
-		         forward = action.execute(request, response);
-		      }else if(spath.equals("/showsUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
-		         Action action = new ShowsUpdateAction();
-		         forward = action.execute(request, response);
-		      }else if(spath.equals("/showsInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
-		         Action action = new ShowsInsertAction();
-		         forward = action.execute(request, response);
-		      }else if(spath.equals("/showsInsert.deco")) {   // 식당 업체 등록 -> 
-		         forward = new ActionForward(false,"deco/showsInsert.jsp");
-		      }else if(spath.contentEquals("/showsModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
-				Action action = new ShowsModifyAction();
-				forward = action.execute(request, response);
-			  }else if(spath.contentEquals("/showsReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
-				Action action = new ShowsReviewInsertAction();
-				forward = action.execute(request, response);
-			  }
+	         Action action = new ShowsListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/shows.deco")) {
+	         Action action = new ShowsAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new ShowsUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new ShowsInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/showsInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/showsInsert.jsp");
+	      }else if(spath.contentEquals("/showsModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new ShowsModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/showsReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new ShowsReviewInsertAction();
+			forward = action.execute(request, response);
+		  }else if(spath.equals("/etcList.deco")) {      // 식당목록 검색
+	         Action action = new EtcListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etc.deco")) {
+	         Action action = new EtcAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new EtcUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new EtcInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/etcInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/etcInsert.jsp");
+	      }else if(spath.contentEquals("/etcModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new EtcModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/etcReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new EtcReviewInsertAction();
+			forward = action.execute(request, response);
+		  }
 
 
 		

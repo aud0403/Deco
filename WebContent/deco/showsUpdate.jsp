@@ -44,7 +44,7 @@
 	 <ul >
 	 <li>수정 전 사진</li>
 	  <li> 
-	 	<img alt="shows" src="/simage/${shwos.inimage}">
+	 	<img alt="shows" src="/simage/${shows.inimage}">
 	 	<img alt="shwos" src="/simage/${shows.outimage}">
 	  </li>
 	 </ul>

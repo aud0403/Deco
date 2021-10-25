@@ -34,39 +34,39 @@
 <hr>
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
-<form action="showsUpdate.deco?page=${page}"method="post">
-<input type="hidden" value="${shows.sidx}" name="sidx">
+<form action="etcUpdate.deco?page=${page}"method="post">
+<input type="hidden" value="${etc.eidx}" name="eidx">
 <ul > 
    <li> 
     <ul >
        <li>지역</li>
-       <li>${shows.location}</li>
+       <li>${etc.location}</li>
        <li>상호</li>
-       <li>${shows.name}</li>
+       <li>${etc.name}</li>
        <li>평점</li>
-       <li name="grade">${shows.grade}</li>
+       <li name="grade">${etc.grade}</li>
     </ul>
    </li>
    <li> 
       <ul >
        <li>내용</li>
-       <li>${shows.content}</li>
+       <li>${etc.content}</li>
       </ul>
    </li>
    <li> 
        <ul>
         <li> 메뉴</li>
-        <li>${shows.menu}</li>
+        <li>${etc.menu}</li>
        </ul>
    </li>
    <li> 
     <ul>
     <li>메뉴 사진</li>
      <li>
-    <img alt="shows_in" src="/simage/${shows.inimage}" width="150px" height="150px"><br></li>
+    <img alt="cafe_in" src="/eimage/${etc.inimage}" width="150px" height="150px"><br></li>
     <li>외관 사진</li>
     <li>
-    <img alt="shows-out" src="/simage/${shows.outimage}">
+    <img alt="cafe-out" src="/eimage/${etc.outimage}">
      </li>
     </ul>
    </li>
@@ -74,7 +74,7 @@
     <ul >
        
       <li>영업시간</li>
-      <li>${shows.opentime} ~ ${shows.closetime}</li>
+      <li>${etc.opentime} ~ ${etc.closetime}</li>
     </ul>
    </li>
    <li> 
@@ -86,19 +86,13 @@
          </li>
       
          <li> 주소 </li>
-         <li>${shows.addr}</li>
+         <li>${etc.addr}</li>
       </ul>
    </li>
     <li> 
      <ul >
         <li> 전화 번호</li>
-        <li>${shows.phone}</li>
-     </ul>
-    </li>
-    <li> 
-     <ul >
-        <li> <a href="${shows.link}">사이트 바로가기</a> </li>
-        
+        <li>${etc.phone}</li>
      </ul>
     </li>
 </ul>
@@ -110,15 +104,15 @@
 </div>
  </form>
  <form action="dibsUpdate.deco">
-    <input type="hidden" name="sidx" value="${shows.sidx }">
+    <input type="hidden" name="eidx" value="${etc.eidx }">
     <input type="submit" value="찜목록 추가/삭제">
  </form>
 </div>
 <!--  -------------------------------------------------------  -->
 <!-- 리뷰 -->
-<form action="showsReviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
-   <input type="hidden" value="${shows.sidx}" name="idx">  <!-- 이 값이 에요?  넵 -->
-   <input type="hidden" value="shows" name="category">
+<form action="etcReviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
+   <input type="hidden" value="${etc.eidx}" name="idx">  <!-- 이 값이 에요?  넵 -->
+   <input type="hidden" value="etc" name="category">
    <hr class="line">
    <div>
    <span> 리뷰</span>
@@ -171,13 +165,13 @@
         <li> 
          <pre> ${re.content}</pre>
         </li>
-      <li><a href="javascript:deleteCmt('${re.idx}','${shows.sidx}','${re.grade}','${page}','${re.nickname}')">삭제</a></li>
+      <li><a href="javascript:deleteCmt('${re.idx}','${etc.eidx}','${re.grade}','${page}','${re.nickname}')">삭제</a></li>
       </ul>
    </li>
    <li> 
       <ul>
          <li> 
-            <img alt="sh-re" src="/reviewimage/${re.imgfile}">
+            <img alt="ca-re" src="/reviewimage/${re.imgfile}">
          </li>
       </ul>
    </li>
@@ -194,7 +188,7 @@ function deleteCmt(reidx,idx,regrade,page,renickname){
       
       const yn = confirm('댓글 삭제하시겠습니까?');
       if(yn){
-         location.href='reviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
+         location.href='etcReviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
       }else{
          alert('댓글 삭제 취소합니다.');
       }
@@ -224,7 +218,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('${shows.addr}', function(result, status) {
+geocoder.addressSearch('${etc.addr}', function(result, status) {
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -235,7 +229,7 @@ geocoder.addressSearch('${shows.addr}', function(result, status) {
         });
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${shows.name}</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${etc.name}</div>'
         });
         infowindow.open(map, marker);
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
