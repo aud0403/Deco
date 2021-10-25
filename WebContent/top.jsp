@@ -16,6 +16,9 @@
 <div>
 <ul class = "container">
 <li><a class="menu" href="cafeList.deco">cafelist</a></li>
+<li><a class="menu" href="foodList.deco">foodlist</a></li>
+<li><a class="menu" href="showList.deco">showlist</a></li>
+<li><a class="menu" href="etcList.deco">etclist</a></li>
 <li><a class="menu" href="logout.deco">logout</a></li>
  
         <li id="logintest">

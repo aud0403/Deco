@@ -30,39 +30,39 @@
 
 <section>
 <hr>
-<form  method="post" action="cafeModify.deco?page=${page}" enctype="multipart/form-data" >
+<form  method="post" action="foodModify.deco?page=${page}" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
-<input type="hidden" name="idx" value="${cafe.idx}">
+<input type="hidden" name="fidx" value="${food.fidx}">
 <ul > 
 	<li> 
 	 <ul >
 	 	<li>지역</li>
-	 	<li> <input type ="text" name="location" value="${cafe.location}" required="required"> </li>
+	 	<li> <input type ="text" name="location" value="${food.location}" required="required"> </li>
 	 	<li>상호</li>
-	 	<li><input type ="text" name="name" value="${cafe.name}" required="required"></li>
+	 	<li><input type ="text" name="name" value="${food.name}" required="required"></li>
 	 	<li>평점</li>
-	 	<li><input type ="text" name="grade" value="${cafe.grade}" required="required"> </li>
+	 	<li><input type ="text" name="grade" value="${food.grade}" required="required"> </li>
 	 </ul>
 	</li>
 	<li> 
 		<ul >
 		 <li>내용</li>
-		 <li><input type ="text" name="content"value="${cafe.content}" required="required"></li>
+		 <li><input type ="text" name="content"value="${food.content}" required="required"></li>
 		</ul>
 	</li>
 	<li> 
 	 	<ul>
 	 	 <li> 메뉴</li>
-	 	 <li>  <input type ="text" name="menu"value="${cafe.menu}" required="required"></li>
+	 	 <li>  <input type ="text" name="menu"value="${food.menu}" required="required"></li>
 	 	</ul>
 	</li>
 	<li> 
 	 <ul >
 	 <li>수정 전 사진</li>
 	  <li> 
-	 	<img alt="cafe" src="/image/${cafe.inimage}">
-	 	<img alt="cafe" src="/image/${cafe.outimage}">
+	 	<img alt="food" src="/fimage/${food.inimage}">
+	 	<img alt="food" src="/fimage/${food.outimage}">
 	  </li>
 	 </ul>
 	</li>
@@ -101,13 +101,13 @@
 	<li> 
 		<ul >
 			<li> 주소 </li>
-			<li> <input type ="text" name="addr"value="${cafe.addr}" required="required"></li>
+			<li> <input type ="text" name="addr"value="${food.addr}" required="required"></li>
 		</ul>
 	</li>
 	 <li> 
 	  <ul >
 	  	<li> 전화 번호</li>
-	  	<li> <input type ="text" name="phone"value="${cafe.phone}" required="required"></li>
+	  	<li> <input type ="text" name="phone"value="${food.phone}" required="required"></li>
 	  </ul>
 	 </li>
 </ul>

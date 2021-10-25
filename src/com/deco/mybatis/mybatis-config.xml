@@ -12,6 +12,7 @@
   	<typeAlias type="com.deco.dto.SessionDto" alias="SessionDto"/>
   	<typeAlias type="com.deco.dto.Dibs" alias="Dibs"/>
   	<typeAlias type="com.deco.dto.Review" alias="Review"/>
+  	<typeAlias type="com.deco.dto.Food" alias="Food"/>
   	
   </typeAliases>
   
@@ -35,6 +36,7 @@
     <mapper resource="com/deco/mybatis/cafe.xml"/>
     <mapper resource="com/deco/mybatis/dibs.xml"/>
     <mapper resource="com/deco/mybatis/review.xml"/>
+    <mapper resource="com/deco/mybatis/food.xml"/>
    
     <!-- sql mapper 파일은 여러개 사용될 수 있음. -->
   </mappers>

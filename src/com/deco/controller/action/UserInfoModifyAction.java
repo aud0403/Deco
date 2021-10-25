@@ -1,19 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.deco.dao.CafeDao;
 import com.deco.dao.UsersDao;
-import com.deco.dto.Cafe;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
-import com.oreilly.servlet.MultipartRequest;
-import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class UserInfoModifyAction implements Action {
 	@Override

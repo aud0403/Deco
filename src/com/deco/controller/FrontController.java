@@ -16,6 +16,12 @@ import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
+import com.deco.controller.action.FoodAction;
+import com.deco.controller.action.FoodInsertAction;
+import com.deco.controller.action.FoodListAction;
+import com.deco.controller.action.FoodModifyAction;
+import com.deco.controller.action.FoodReviewInsertAction;
+import com.deco.controller.action.FoodUpdateAction;
 import com.deco.controller.action.HomeLoginAction;
 import com.deco.controller.action.CafeListAction;
 import com.deco.controller.action.LoginAction;
@@ -114,8 +120,28 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/dibsUpdate.deco")) {	// 찜목록 추가/삭제
 			Action action = new DibsUpdateAction();
 			forward = action.execute(request, response);
-		}
-		
+		}else if(spath.equals("/foodList.deco")) {      // 식당목록 검색
+	         Action action = new FoodListAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/food.deco")) {
+	         Action action = new FoodAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+	         Action action = new FoodUpdateAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+	         Action action = new FoodInsertAction();
+	         forward = action.execute(request, response);
+	      }else if(spath.equals("/foodInsert.deco")) {   // 식당 업체 등록 -> 
+	         forward = new ActionForward(false,"deco/foodInsert.jsp");
+	      }else if(spath.contentEquals("/foodModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+			Action action = new FoodModifyAction();
+			forward = action.execute(request, response);
+		  }else if(spath.contentEquals("/foodreviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+				Action action = new FoodReviewInsertAction();
+				forward = action.execute(request, response);
+			  }
+	
 		
 		
 		
