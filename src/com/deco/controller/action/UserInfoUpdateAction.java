@@ -1,6 +1,6 @@
 package com.deco.controller.action;
 
-import java.io.IOException;
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.deco.dao.UsersDao;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Users;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Update;
 
 public class UserInfoUpdateAction implements Action {
  // 수정 

@@ -13,6 +13,8 @@ import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
 import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
+import com.deco.controller.action.CafeListAction;
+import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
@@ -23,13 +25,17 @@ import com.deco.controller.action.FoodModifyAction;
 import com.deco.controller.action.FoodReviewInsertAction;
 import com.deco.controller.action.FoodUpdateAction;
 import com.deco.controller.action.HomeLoginAction;
-import com.deco.controller.action.CafeListAction;
+import com.deco.controller.action.JoinAction;
 import com.deco.controller.action.LoginAction;
 import com.deco.controller.action.LogoutAction;
-import com.deco.controller.action.JoinAction;
-import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
+import com.deco.controller.action.ShowsAction;
+import com.deco.controller.action.ShowsInsertAction;
+import com.deco.controller.action.ShowsListAction;
+import com.deco.controller.action.ShowsModifyAction;
+import com.deco.controller.action.ShowsReviewInsertAction;
+import com.deco.controller.action.ShowsUpdateAction;
 import com.deco.controller.action.UserInfoAction;
 import com.deco.controller.action.UserInfoDeleteAction;
 import com.deco.controller.action.UserInfoModifyAction;
@@ -138,10 +144,31 @@ public class FrontController extends HttpServlet {
 			Action action = new FoodModifyAction();
 			forward = action.execute(request, response);
 		  }else if(spath.contentEquals("/foodreviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
-				Action action = new FoodReviewInsertAction();
+			Action action = new FoodReviewInsertAction();
+			forward = action.execute(request, response);
+		  }else if(spath.equals("/showsList.deco")) {      // 식당목록 검색
+		         Action action = new ShowsListAction();
+		         forward = action.execute(request, response);
+		      }else if(spath.equals("/shows.deco")) {
+		         Action action = new ShowsAction();
+		         forward = action.execute(request, response);
+		      }else if(spath.equals("/showsUpdate.deco")) {   // 식당 정보 수정 -> foodUpdate.jsp로
+		         Action action = new ShowsUpdateAction();
+		         forward = action.execute(request, response);
+		      }else if(spath.equals("/showsInsertAction.deco")) {   // 식당 업체 등록 완료 후 -> home.deco
+		         Action action = new ShowsInsertAction();
+		         forward = action.execute(request, response);
+		      }else if(spath.equals("/showsInsert.deco")) {   // 식당 업체 등록 -> 
+		         forward = new ActionForward(false,"deco/showsInsert.jsp");
+		      }else if(spath.contentEquals("/showsModify.deco")){	//식당 정보 수정하고 다시 food.jsp로
+				Action action = new ShowsModifyAction();
+				forward = action.execute(request, response);
+			  }else if(spath.contentEquals("/showsReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
+				Action action = new ShowsReviewInsertAction();
 				forward = action.execute(request, response);
 			  }
-	
+
+
 		
 		
 		
