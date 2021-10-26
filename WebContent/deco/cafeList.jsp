@@ -18,15 +18,7 @@
     </a>
   </div>
   <div>
-      <div>
-      <label for="">[카테고리]</label>
-      	<ul>
-      		<li><a href="list.deco">카페</a></li>
-      		<li><a href="#">맛집</a></li>
-      		<li><a href="#">공연/전시</a></li>
-      		<li><a href="#">체험/이색데이트</a></li>
-      	</ul>
-      </div>		<!-- 파라미터 남아있게 하는게 숙제.... -->
+      		<!-- 파라미터 남아있게 하는게 숙제.... -->
     <form action="cafeList.deco" method="get">
     	<input type="hidden" name="default" value="all" >
       <label for="">[지역]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

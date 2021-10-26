@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cafe글 수정하기</title>
+<title>::dec::cafe수정</title>
 </head>
 <body>
 <h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
@@ -114,7 +114,6 @@
 <div>
 	<input type="submit" value="저장" class="">
 	<input type="reset" value="다시쓰기" class="">
-	<input type="button" value="목록" onclick="location.href='list.deco?page=${page}'" class="">
 	
 </div>
 </div>

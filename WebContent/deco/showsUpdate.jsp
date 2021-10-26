@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cafe글 수정하기</title>
+<title>::deco::공연 수정</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>
 <section>
 <h1>카페 업데이트</h1>
 <hr>
-<form  method="post" action="cafeModify.deco" >
+<form  method="post" action="showsModify.deco?page=${page}" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
 <input type="hidden" name="sidx"value="${shows.sidx}">
@@ -103,7 +103,6 @@
 <div>
 	<input type="submit" value="저장" class="">
 	<input type="reset" value="다시쓰기" class="">
-	<input type="button" value="목록" onclick="location.href='showsList.deco'" class="">
 	
 </div>
 </div>

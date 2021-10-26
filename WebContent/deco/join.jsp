@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>day3 [2]-회원 등록</title>
+<title>::회원 가입::</title>
 <!-- 스타일 참고  -->
 <script>
    function validCheck() {

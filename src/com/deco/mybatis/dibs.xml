@@ -16,6 +16,15 @@
   	<update id="updateCafeDibs" parameterType="String">
   		update dibs set dibCafe=#{dibCafe} where nickname=#{nickname}
   	</update>
+  	<update id="updateFoodDibs" parameterType="String">
+  		update dibs set dibFood=#{dibFood} where nickname=#{nickname}
+  	</update>
+  	<update id="updateShowsDibs" parameterType="String">
+  		update dibs set dibShow=#{dibShow} where nickname=#{nickname}
+  	</update>
+  	<update id="updateEtcDibs" parameterType="String">
+  		update dibs set dibEx=#{dibEx} where nickname=#{nickname}
+  	</update>
   	
   	<delete id="dibsDelete" parameterType="String">
   		delete from dibs where nickname = #{nickname}

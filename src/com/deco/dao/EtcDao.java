@@ -1,6 +1,6 @@
 package com.deco.dao;
 
-import java.util.List; 
+import java.util.List;  
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,6 +32,13 @@ public class EtcDao {
 		List<Etc> list = null;
 		SqlSession mapper = factory.openSession();
 		list = mapper.selectList("etc.getList",map);
+		mapper.close();
+		return list;
+	}
+	public List<Etc> getEtcBest() {
+		List<Etc> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("etc.etcBest");
 		mapper.close();
 		return list;
 	}

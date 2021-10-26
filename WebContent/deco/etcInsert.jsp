@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>데이터 업로드 view</title>
+<title>::deco::이색체험 등록</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>
@@ -14,43 +14,43 @@
 		<form  method="post" action="etcInsertAction.deco" enctype="multipart/form-data" >
 		<table>
 		<tr>
-					<td><label>카페 이름</label></td>
+					<td><label>업체 이름</label></td>
 					<!--  required 필수 입력  , readonly : 읽기만.-->
 					<td><input type="text" name="name" placeholder="카페 이름(필수)"
 						required></td>
 				</tr>
 				<tr>
-					<td><label>카페 주소</label></td>
+					<td><label>업체 주소</label></td>
 					<td><input type="text" name="addr" placeholder="주소 입력"></td>
 				</tr>
 				<tr> 
-				 <td> <label>카페 지역명</label> </td>
+				 <td> <label>업체  지역명</label> </td>
 				 <td> <input type ="text" name="location"></td>
 				</tr>
 				<tr>
-					<td><label>카페 메뉴</label></td>
+					<td><label>업체 메뉴</label></td>
 					<td><textarea rows="5" cols="50" placeholder ="메뉴를 작성해주세요"
  					class="input" name="menu"required></textarea></td>
 				</tr>
 				<tr> 
-					<td><label>카페 평점</label> </td>
+					<td><label>업체  평점</label> </td>
 					<td> <input type ="number" name="grade" min ="1" max="5"> </td>
 				
 				</tr>
 				<tr>
-					<td><label>카페 전화번호</label></td>
+					<td><label>업체  전화번호</label></td>
 					<td><input type="text" name="phone" placeholder="전화번호 입력"></td>
 				</tr>
 				<tr>
-					<td><label>카페 OPEN 시간</label></td>
+					<td><label>업체  OPEN 시간</label></td>
 					<td><input type="time" name="opentime" placeholder="영업시간 입력"></td>
 				</tr>
 				<tr>
-					<td><label>카페 CLOSE 시간</label></td>
+					<td><label>업체  CLOSE 시간</label></td>
 					<td><input type="time" name="closetime" placeholder="영업시간 입력"></td>
 				</tr>
 				<tr>
-					<td><label>카페 설명</label></td>
+					<td><label>업체  설명</label></td>
 					<td><textarea rows="3" cols="80" placeholder ="내용을 작성해 주세요"
  					class="input"  name ="content" required></textarea></td>
 				</tr>

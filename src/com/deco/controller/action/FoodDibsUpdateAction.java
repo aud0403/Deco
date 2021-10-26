@@ -15,7 +15,7 @@ import com.deco.dto.SessionDto;
 
 
 
-public class DibsUpdateAction implements Action {
+public class FoodDibsUpdateAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response)
@@ -42,31 +42,31 @@ public class DibsUpdateAction implements Action {
 		// dibCafe 가져오기
 		String nickname = sdto.getNickname();	// user 에서 닉네임
 		Dibs dibs = dibsdao.getDibs(nickname);	// 닉네임으로 dibs 정보
-		String dibCafe = dibs.getDibCafe();	// 요것이 dibCafe 컬럼
-		boolean isDibCafe = dibCafe.contains("/"+refidx+"/");
+		String dibFood = dibs.getDibFood();	// 요것이 dibFood 컬럼
+		boolean isDibFood = dibFood.contains("/"+refidx+"/");
 		
-		if(!isDibCafe) {		// false 이면 추가 !!
-			if(dibCafe==null) dibCafe = "/";
-			dibCafe += refidx + "/";
+		if(!isDibFood) {		// false 이면 추가 !!
+			if(dibFood==null) dibFood = "/";
+			dibFood += refidx + "/";
 			
 			// dibs 테이블에 update 할 메소드 필요!
-			map.put("dibCafe", dibCafe);
+			map.put("dibFood", dibFood);
 			map.put("nickname", nickname);
-			dibsdao.updateCafeDibs(map);
+			dibsdao.updateFoodDibs(map);
 			
 			message="찜목록 추가 완료!";
-			url="cafe.deco?idx="+refidx;
+			url="food.deco?fidx="+refidx;
 		}else {		// true 이면 삭제!!
-			System.out.println(dibCafe);
-			dibCafe = dibCafe.replace("/"+refidx+"/", "/");	// ex "/123/" 삭제하고 "/"로 대체 
-			System.out.println(dibCafe);				// 원본이 안바껴서 다시 담아줌 ㅠㅠ
+			System.out.println(dibFood);
+			dibFood = dibFood.replace("/"+refidx+"/", "/");	// ex "/123/" 삭제하고 "/"로 대체 
+			System.out.println(dibFood);				// 원본이 안바껴서 다시 담아줌 ㅠㅠ
 			
-			map.put("dibCafe", dibCafe);
+			map.put("dibFood", dibFood);
 			map.put("nickname", nickname);
-			dibsdao.updateCafeDibs(map);
+			dibsdao.updateFoodDibs(map);
 			
 			message="찜목록 삭제 완료!";
-			url="cafe.deco?idx="+refidx;
+			url="food.deco?fidx="+refidx;
 		}
 		
 		request.setAttribute("message", message);

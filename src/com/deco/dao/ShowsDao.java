@@ -1,6 +1,6 @@
 package com.deco.dao;
 
-import java.util.List;
+import java.util.List; 
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,14 +28,20 @@ public class ShowsDao {
 //	}
 	
 	//명진님 getList
-	public List<Shows> getList(Map<String, Object> map) {
+	public List<Shows> getList(Map<String, Integer> map) {
 		List<Shows> list = null;
 		SqlSession mapper = factory.openSession();
 		list = mapper.selectList("shows.getList",map);
 		mapper.close();
 		return list;
 	}
-	
+	public List<Shows> getShowsBest() {
+		List<Shows> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("shows.showsBest");
+		mapper.close();
+		return list;
+	}
 	
 	public Shows getOne(int sidx) {
 		SqlSession mapper = factory.openSession();
@@ -44,13 +50,7 @@ public class ShowsDao {
 		return c;
 	}
 	
-	public List<Shows> getLocation(Map<String,Object> map) {
-		List<Shows> list = null;
-		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("shows.getLocation", map);
-		mapper.close();
-		return list;
-	}
+	
 	
 	public void insert(Shows shows) {
 		SqlSession mapper = factory.openSession();

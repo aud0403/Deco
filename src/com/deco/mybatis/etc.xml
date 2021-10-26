@@ -64,6 +64,8 @@
 	
 	<update id="gradeup" parameterType="Etc">
  		update etc set grade=#{grade} where eidx=#{eidx}
- 	
  	</update>
+ 	<select id="etcBest" resultType="Etc">
+      select * from etc order by grade desc limit 3
+   </select>
 </mapper>

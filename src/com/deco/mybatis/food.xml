@@ -64,6 +64,9 @@
 	
 	<update id="gradeup" parameterType="Food">
  		update food set grade=#{grade} where fidx=#{fidx}
- 	
  	</update>
+ 	
+ 	<select id="foodBest" resultType="Food">
+      select * from food order by grade desc limit 3
+   </select>
 </mapper>

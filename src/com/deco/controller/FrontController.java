@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.deco.controller.action.Action;
 import com.deco.controller.action.ActionForward;
+import com.deco.controller.action.BestAction;
 import com.deco.controller.action.CafeAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeListAction;
@@ -19,12 +20,14 @@ import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
 import com.deco.controller.action.EtcAction;
+import com.deco.controller.action.EtcDibsUpdateAction;
 import com.deco.controller.action.EtcInsertAction;
 import com.deco.controller.action.EtcListAction;
 import com.deco.controller.action.EtcModifyAction;
 import com.deco.controller.action.EtcReviewInsertAction;
 import com.deco.controller.action.EtcUpdateAction;
 import com.deco.controller.action.FoodAction;
+import com.deco.controller.action.FoodDibsUpdateAction;
 import com.deco.controller.action.FoodInsertAction;
 import com.deco.controller.action.FoodListAction;
 import com.deco.controller.action.FoodModifyAction;
@@ -37,6 +40,7 @@ import com.deco.controller.action.LogoutAction;
 import com.deco.controller.action.ReviewInsertAction;
 import com.deco.controller.action.ReviewListAction;
 import com.deco.controller.action.ShowsAction;
+import com.deco.controller.action.ShowsDibsUpdateAction;
 import com.deco.controller.action.ShowsInsertAction;
 import com.deco.controller.action.ShowsListAction;
 import com.deco.controller.action.ShowsModifyAction;
@@ -132,6 +136,15 @@ public class FrontController extends HttpServlet {
 		}else if(spath.equals("/dibsUpdate.deco")) {	// 찜목록 추가/삭제
 			Action action = new DibsUpdateAction();
 			forward = action.execute(request, response);
+		}else if(spath.equals("/foodDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new FoodDibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/showsDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new ShowsDibsUpdateAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/etcDibsUpdate.deco")) {	// 찜목록 추가/삭제
+			Action action = new EtcDibsUpdateAction();
+			forward = action.execute(request, response);
 		}else if(spath.equals("/foodList.deco")) {      // 식당목록 검색
 	         Action action = new FoodListAction();
 	         forward = action.execute(request, response);
@@ -192,7 +205,12 @@ public class FrontController extends HttpServlet {
 		  }else if(spath.contentEquals("/etcReviewInsert.deco")){	//식당 정보 수정하고 다시 food.jsp로
 			Action action = new EtcReviewInsertAction();
 			forward = action.execute(request, response);
-		  }
+		  }else if(spath.equals("/insertButton.deco")) {	// 카페 업체 등록 -> cafe.jsp로
+				forward = new ActionForward(false,"deco/insertButton.jsp");
+			}else if(spath.contentEquals("/best.deco")){	//금주의 핫플로
+				Action action = new BestAction();
+				forward = action.execute(request, response);
+			  }
 
 
 		

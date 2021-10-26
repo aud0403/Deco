@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>데이터 업로드 view</title>
+<title>::deco::cafe등록</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>

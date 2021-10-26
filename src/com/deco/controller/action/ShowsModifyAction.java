@@ -7,9 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.CafeDao;
 import com.deco.dao.ShowsDao;
+import com.deco.dto.Cafe;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Shows;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ShowsModifyAction implements Action {
 
@@ -30,25 +34,34 @@ public class ShowsModifyAction implements Action {
 			return forward;
 		}
 		
-		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html");
-		int sidx=Integer.parseInt(request.getParameter("sidx"));
-		String location= request.getParameter("location");
-		String name= request.getParameter("name");
-		double grade= Double.parseDouble(request.getParameter("grade"));
-		String content= request.getParameter("content");
-		String menu= request.getParameter("menu");
-		String opentime= request.getParameter("opentime");
-		String closetime= request.getParameter("closetime");
-		String addr= request.getParameter("addr");
-		String phone= request.getParameter("phone");
-		
-		String link= request.getParameter("link");
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
+		String path="c:\\upload/shows";
+		int idx =0;
+	      int size=10*1024*1024; 
+	     
+	      try {
+		      MultipartRequest multi_request = new MultipartRequest(request,path,size,"UTF-8",
+		                                    new DefaultFileRenamePolicy());
+		   	
+		      
+	    idx=Integer.parseInt(multi_request.getParameter("sidx"));
+		String location= multi_request.getParameter("location");
+		String name= multi_request.getParameter("name");
+		double grade= Double.parseDouble(multi_request.getParameter("grade"));
+		String content= multi_request.getParameter("content");
+		String menu= multi_request.getParameter("menu");
+		String opentime= multi_request.getParameter("opentime");
+		String closetime= multi_request.getParameter("closetime");
+		String addr= multi_request.getParameter("addr");
+		String phone= multi_request.getParameter("phone");
+		String outimage = multi_request.getFilesystemName("outimage");		
+		String inimage = multi_request.getFilesystemName("inimage");
 		
 		
 		Shows dto = new Shows();
-		dto.setSidx(sidx);
+		dto.setSidx(idx);
 		dto.setLocation(location);
 		dto.setName(name);
 		dto.setGrade(grade);
@@ -58,15 +71,25 @@ public class ShowsModifyAction implements Action {
 		dto.setClosetime(closetime);
 		dto.setAddr(addr);
 		dto.setPhone(phone);
-		dto.setLink(link);
+		dto.setOutimage(outimage);
+		dto.setInimage(inimage);
+		
 		
 		ShowsDao dao = ShowsDao.getInstance();
 		dao.update(dto);
+		System.out.println(dto);
+	      }catch (Exception e) {
+			   e.printStackTrace();
+		}
+	  System.out.println(idx);
 		
-		forward.isRedirect = false;
-		forward.url="shows.deco?sidx="+sidx;
-		return forward;
+		ActionForward foward =new ActionForward();
+		foward.isRedirect = true;
+		foward.url="shows.deco?sidx="+idx+ "&page="+pageNo;
+		return foward;
 		
 	}
+
+
 
 }

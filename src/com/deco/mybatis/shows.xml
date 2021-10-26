@@ -21,14 +21,7 @@
 		select count(*) from shows
 	</select>
 	
-	<!-- 카테고리 별 지역체크박스 파라미터 넘겨받아서 카페 검색하는 메소드 -->
-	<select id="getLocation" resultType="Shows" parameterType="java.util.Map">
-		select * from show where location = 
-		<foreach item="loca" index="index" collection="location" separator=" or location = ">
-				#{loca} 
-		</foreach>
-		order by grade desc limit #{startNo},#{pageSize}
-	</select>
+	
 	
 	<select id="getRan" resultType="Shows">
 		select * from shows order by rand() limit 1
@@ -64,6 +57,8 @@
 	
 	<update id="gradeup" parameterType="Shows">
  		update shows set grade=#{grade} where sidx=#{sidx}
- 	
  	</update>
+ 	<select id="showsBest" resultType="Shows">
+      select * from shows order by grade desc limit 3
+   </select>
 </mapper>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 </head>
-<title>deco ::리뷰목록</title>
+<title>::deco::리뷰목록</title>
 <body>
 <%@ include file="../top.jsp" %>
 <section>
@@ -19,6 +19,8 @@
 		<li>${vo.content }</li>
 		<li>${vo.grade }</li>
 		<li>${vo.category }</li>
+		<li><img alt="cafe-out" src="/reviewimage/${vo.imgfile}" width="150px" height="150px"></li>
+		
 		<li> <a href ="cafe.deco?idx=${vo.refidx}">글 보러가기</a> </li>
 	</ul>
 	</c:forEach>

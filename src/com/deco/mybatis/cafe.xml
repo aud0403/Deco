@@ -64,6 +64,8 @@
 	
 	<update id="gradeup" parameterType="Cafe">
  		update cafe set grade=#{grade} where idx=#{idx}
- 	
  	</update>
+ 	<select id="cafeBest" resultType="Cafe">
+      select * from cafe order by grade desc limit 3
+   </select>
 </mapper>

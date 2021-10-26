@@ -32,12 +32,14 @@ public class EtcUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");	
 		
 		int eidx = Integer.parseInt(request.getParameter("eidx"));
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
 		EtcDao dao = EtcDao.getInstance();
 		
 		System.out.println(eidx);
 		Etc dto= dao.getOne(eidx);
 		System.out.println(dto);
 		request.setAttribute("etc", dto);
+		request.setAttribute("page", pageNo);
 		
 		
 		forward.isRedirect = false;

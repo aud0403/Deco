@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deco :: 회원정보</title>
+<title>::deco::회원정보</title>
 <!-- 스타일 참고  -->
 <link rel="stylesheet" href="">
 </head>

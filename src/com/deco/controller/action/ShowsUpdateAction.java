@@ -32,12 +32,14 @@ public class ShowsUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");	
 		
 		int idx = Integer.parseInt(request.getParameter("sidx"));
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
 		ShowsDao dao = ShowsDao.getInstance();
 		
 		System.out.println(idx);
 		Shows dto= dao.getOne(idx);
 		System.out.println(dto);
 		request.setAttribute("shows", dto);
+		request.setAttribute("page", pageNo);
 		
 		
 		forward.isRedirect = false;

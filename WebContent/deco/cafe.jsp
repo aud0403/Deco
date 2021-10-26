@@ -5,28 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>cafe글 상세보기</title>
+<title>::deco::cafe</title>
 </head>
 <link rel="stylesheet" href="../css/cafe.css">
 <body>
 <%@ include file="../top.jsp" %>
 <h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
 
-<nav>
-   <ul>
-   <li id="login" >
-    <c:if test="${sessionScope.user == null }">
-      <a href="login.do" class="menu">로그인</a>
-   </c:if>
-      <c:if test="${sessionScope.user != null }">
-      <!-- 로그인된 상태 -->
-      <br>${user.name }(${user.email })  님 반갑습니다. <br>
-      <a href="logout.do" class="menu">로그아웃</a>
-      <a href="" >마이페이지</a>
-   </c:if>
-       </li>
-    </ul>
-</nav>
+
 
 
 
@@ -98,13 +84,12 @@
 </ul>
 <div>
    <input type="submit" value="수정" class="button small">
-   <input type="reset" value="취소" class="button small">
    <input type="button" onclick="location.href='home.jsp'" value="메인화면" class="button small">
-   <input type="button" onclick="location.href='list.deco?page=${page}'" value="리스트" class="button small">
+   <input type="button" onclick="location.href='cafeList.deco?page=${page}'" value="리스트" class="button small">
 </div>
  </form>
  <form action="dibsUpdate.deco">
-    <input type="hidden" name="refidx" value="${cafe.idx }">
+    <input type="hidden" name="idx" value="${cafe.idx }">
     <input type="submit" value="찜목록 추가/삭제">
  </form>
 </div>
@@ -238,5 +223,6 @@ geocoder.addressSearch('${cafe.addr}', function(result, status) {
 });    
    </script>
 <!-- enctype="multipart/form-data" -->
+<%@ include file="../bottom.jsp" %>
 </body>
 </html>

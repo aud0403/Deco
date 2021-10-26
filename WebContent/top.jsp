@@ -19,7 +19,7 @@
 <li><a class="menu" href="foodList.deco">foodlist</a></li>
 <li><a class="menu" href="showsList.deco">showlist</a></li>
 <li><a class="menu" href="etcList.deco">etclist</a></li>
-<li><a class="menu" href="logout.deco">logout</a></li>
+<li><a class="menu" href="insertButton.deco">업체등록</a></li>
  
         <li id="logintest">
         <c:if test="${sessionScope.user == null}">

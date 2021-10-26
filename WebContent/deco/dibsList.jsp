@@ -10,14 +10,7 @@
 <body>
 <%@ include file="../top.jsp" %>
 <section>
-	<div>
-		<ul>
-			<li><a href="">카페</a></li>
-			<li><a href="">맛집</a></li>
-			<li><a href="">공연/전시</a></li>
-			<li><a href="">체험/이색데이트</a></li>
-		</ul>
-	</div>
+	
 	<div>
 		<c:forEach var="vo" items="${dibsCafe}">
 			<ul>

@@ -35,6 +35,14 @@ public class CafeDao {
 		mapper.close();
 		return list;
 	}
+	public List<Cafe> getCafeBest() {
+		List<Cafe> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("cafe.cafeBest");
+		mapper.close();
+		return list;
+	}
+	
 	
 	
 	public Cafe getOne(int idx) {

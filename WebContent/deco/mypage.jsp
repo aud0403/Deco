@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>deco ::마이페이지</title>
+<title>::deco::마이페이지</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>

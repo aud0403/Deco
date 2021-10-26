@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>데이터 업로드 view</title>
+<title>::deco::공연 등록</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>

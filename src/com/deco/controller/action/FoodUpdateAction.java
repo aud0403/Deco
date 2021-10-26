@@ -32,12 +32,14 @@ public class FoodUpdateAction implements Action {
 		request.setCharacterEncoding("UTF-8");	
 		 //  변경 시작위치
 		int fidx = Integer.parseInt(request.getParameter("fidx"));
+		int pageNo =  Integer.parseInt(request.getParameter("page"));
 		FoodDao dao = FoodDao.getInstance();
 		
 		System.out.println(fidx);
 		Food dto= dao.getOne(fidx);
 		System.out.println(dto);
 		request.setAttribute("food", dto);
+		request.setAttribute("page", pageNo);
 		
 		
 		forward.isRedirect = false;

@@ -1,6 +1,6 @@
 package com.deco.dao;
 
-import java.util.List; 
+import java.util.List;  
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -32,6 +32,14 @@ public class FoodDao {
 		List<Food> list = null;
 		SqlSession mapper = factory.openSession();
 		list = mapper.selectList("food.getList",map);
+		mapper.close();
+		return list;
+	}
+	
+	public List<Food> getFoodBest() {
+		List<Food> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("food.foodBest");
 		mapper.close();
 		return list;
 	}

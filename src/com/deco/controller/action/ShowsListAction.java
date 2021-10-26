@@ -1,7 +1,6 @@
 package com.deco.controller.action;
 
-import java.io.IOException; 
-import java.util.ArrayList;
+import java.io.IOException;  
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,38 +34,24 @@ public class ShowsListAction implements Action {
 		
 		
 		ShowsDao dao = ShowsDao.getInstance();
-		List<Shows> list = new ArrayList<Shows>();
-		Map<String,Object> map = new HashMap<>();
-
-		int pageNo;
-		if(request.getParameter("page")==null) pageNo=1;
-		else pageNo = Integer.parseInt(request.getParameter("page"));
-		int pageSize =10;
 		
-		PageDto pageDto = new PageDto(pageNo,dao.getCount(),pageSize);
+		 int pageNo;
+			if(request.getParameter("page")==null) pageNo=1;
+			else pageNo = Integer.parseInt(request.getParameter("page"));
+			int pageSize =10;
 		
-		map.put("pageSize",pageSize);
-		map.put("startNo",pageDto.getStartNo());
+			PageDto pageDto = new PageDto(pageNo,dao.getCount(),pageSize);
 		
-		String locationAll = request.getParameter("locatoinAll");	//전체선택
-		String[] location = request.getParameterValues("location");	//지역별 카테고리 배열로 받음
-		
-		if(locationAll==null&&location==null) {	//처음 리스트 진입 시 
-			locationAll = "all";
-		}else if(locationAll==null&&location!=null) {	// 전체선택 아닐때 null 방지
-			locationAll = "";
-		}
+			Map<String,Integer> map = new HashMap<>();
+			map.put("pageSize",pageSize);
+			map.put("startNo",pageDto.getStartNo());
+			request.setAttribute("pageDto", pageDto);
 			
-		if(locationAll.equals("all")) { // 전체선택일경우 & 처음엔 무조건 전체출력
-			list = dao.getList(map);
-		}else {									// 지역별
-			System.out.println(location);
-			map.put("location", location);
-			list = dao.getLocation(map);
-		}
 		
-		request.setAttribute("pageDto", pageDto);
+		List<Shows> list = dao.getList(map);
 		request.setAttribute("ShowsList", list);
+		System.out.println(list);
+		System.out.println(list.size());
 		forward.isRedirect = false;
 		forward.url="deco/showsList.jsp";
 		return forward;

@@ -6,14 +6,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>etc글 수정하기</title>
+<title>::deco::이색체험 수정</title>
 </head>
 <body>
 <%@ include file="../top.jsp" %>
 <section>
 <h1>카페 업데이트</h1>
 <hr>
-<form  method="post" action="etcModify.deco" >
+<form  method="post" action="etcModify.deco?page=${page}" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
 <h3>카페</h3>
 <input type="hidden" name="eidx"value="${etc.eidx}">
@@ -98,13 +98,29 @@
 <div>
 	<input type="submit" value="저장" class="">
 	<input type="reset" value="다시쓰기" class="">
-	<input type="button" value="목록" onclick="location.href='etcList.deco'" class="">
 	
 </div>
 </div>
 </form>
 </section>
 <%@ include file="../bottom.jsp" %>
-
+<script type="text/javascript">
+function setThumbnail(event) {
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container").appendChild(img); }; 
+	reader.readAsDataURL(event.target.files[0]); }	
+	
+function setThumbnail2(event) {
+	var reader = new FileReader(); 
+	reader.onload = function(event) { 
+	var img = document.createElement("img"); 
+	img.setAttribute("src", event.target.result); 
+	document.querySelector("div#image_container2").appendChild(img); }; 
+	reader.readAsDataURL(event.target.files[0]); }	
+	
+</script>
 </body>
 </html>
