@@ -30,7 +30,31 @@ public class ReviewDao {
 		//key(변수명처럼 이해) String, value  는 int
 		List<Review> list = null;
 		SqlSession mapper = factory.openSession();
-		list = mapper.selectList("review.getReview",refidx);
+		list = mapper.selectList("review.cafegetReview",refidx);
+		mapper.close();
+		return list;
+	}
+	public List<Review> foodgetReview(int fidx){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.foodgetReview",fidx);
+		mapper.close();
+		return list;
+	}
+	public List<Review> showsgetReview(int sidx){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.showsgetReview",sidx);
+		mapper.close();
+		return list;
+	}
+	public List<Review> etcgetReview(int eidx){   
+		//key(변수명처럼 이해) String, value  는 int
+		List<Review> list = null;
+		SqlSession mapper = factory.openSession();
+		list = mapper.selectList("review.etcgetReview",eidx);
 		mapper.close();
 		return list;
 	}
@@ -50,9 +74,27 @@ public class ReviewDao {
 		return dto;
 	}
 	
-	public void insert(Review review) {
+	public void cafeInsert(Review review) {
 		SqlSession mapper = factory.openSession();
-		mapper.insert("review.insert",review);
+		mapper.insert("review.cafeInsert",review);
+		mapper.commit();
+		mapper.close();
+	}
+	public void foodInsert(Review review) {
+		SqlSession mapper = factory.openSession();
+		mapper.insert("review.foodInsert",review);
+		mapper.commit();
+		mapper.close();
+	}
+	public void showsInsert(Review review) {
+		SqlSession mapper = factory.openSession();
+		mapper.insert("review.showsInsert",review);
+		mapper.commit();
+		mapper.close();
+	}
+	public void etcInsert(Review review) {
+		SqlSession mapper = factory.openSession();
+		mapper.insert("review.etcInsert",review);
 		mapper.commit();
 		mapper.close();
 	}
@@ -63,4 +105,30 @@ public class ReviewDao {
 		mapper.commit();
 		mapper.close();
 	}
+	
+	public int cafeCount(int refidx) {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("review.cafeCount",refidx);  //여기문제인데요.
+		mapper.close();     
+		return cnt;
+	}
+	public int foodCount(int fidx) {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("review.foodCount",fidx);  
+		mapper.close();     
+		return cnt;
+	}
+	public int showsCount(int sidx) {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("review.showsCount",sidx);  
+		mapper.close();     
+		return cnt;
+	}
+	public int etcCount(int eidx) {
+		SqlSession mapper = factory.openSession();
+		int cnt = mapper.selectOne("review.etcCount",eidx);  
+		mapper.close();     
+		return cnt;
+	}
+	
 }

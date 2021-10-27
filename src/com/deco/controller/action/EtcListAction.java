@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.deco.dao.EtcDao;
+import com.deco.dao.ReviewDao;
 import com.deco.dto.Etc;
 import com.deco.dto.PageDto;
 import com.deco.dto.SessionDto;
@@ -65,6 +66,17 @@ public class EtcListAction implements Action {
 			list = dao.getLocation(map);
 		}
 		
+		ReviewDao rdao = ReviewDao.getInstance();
+		
+		
+		List<Integer> reviewcnts = new ArrayList<>();
+		for(int i=0;i<list.size();i++) {  
+			int reviewCount=rdao.etcCount(list.get(i).getEidx());
+			reviewcnts.add(reviewCount);
+		}
+		System.out.println(reviewcnts);
+		
+		request.setAttribute("reviewcnts",reviewcnts);
 		request.setAttribute("pageDto", pageDto);
 		request.setAttribute("EtcList", list);
 		forward.isRedirect = false;

@@ -12,21 +12,62 @@
  		select * from review where idx=#{idx}
  	</select>  
  	
- 	<select id="getReview" parameterType="int" resultType="Review">
-		select * from review where refidx= #{refdix}
+ 	<select id="cafegetReview" parameterType="int" resultType="Review">
+		select * from review where refidx= #{refidx}
+	</select>
+	<select id="foodgetReview" parameterType="int" resultType="Review">
+		select * from review where fidx= #{fidx}
+	</select>
+	<select id="showsgetReview" parameterType="int" resultType="Review">
+		select * from review where sidx= #{sidx}
+	</select>
+	<select id="etcgetReview" parameterType="int" resultType="Review">
+		select * from review where eidx= #{eidx}
 	</select>
  	<select id="reviewList" resultType="Review" parameterType="String">
  		select *from review where nickname=#{nickname};
  	</select>
  
- 	<insert id="insert" parameterType="Review">
+ 	<insert id="cafeInsert" parameterType="Review">
  		insert into review (nickname, grade, content, category,refidx,imgfile)
 		values(#{nickname}, #{grade}, #{content}, #{category},#{refidx},#{imgfile})
+		
+	</insert>
+	<insert id="foodInsert" parameterType="Review">
+ 		insert into review (nickname, grade, content, category,fidx,imgfile)
+		values(#{nickname}, #{grade}, #{content}, #{category},#{fidx},#{imgfile})
+		
+	</insert>
+	<insert id="showsInsert" parameterType="Review">
+ 		insert into review (nickname, grade, content, category,sidx,imgfile)
+		values(#{nickname}, #{grade}, #{content}, #{category},#{sidx},#{imgfile})
+		
+	</insert>
+	<insert id="etcInsert" parameterType="Review">
+ 		insert into review (nickname, grade, content, category,eidx,imgfile)
+		values(#{nickname}, #{grade}, #{content}, #{category},#{eidx},#{imgfile})
+		
 	</insert>
 	
  	<delete id="delete" parameterType="int">
 		delete from review where idx=#{idx}
 	</delete>
+	<select id="cafeCount"  resultType="int" parameterType="int">
+	 select count(*) from review where refidx=#{refidx}     
+	</select>
+	<select id="foodCount" resultType="int" parameterType="int">
+	 select count(*) from review where fidx=#{fidx}
+	</select>
+	
+	<select id="showsCount" resultType="int" parameterType="int">
+	 select count(*) from review where sidx=#{sidx}
+	</select>
+	
+	<select id="etcCount" resultType="int" parameterType="int">
+	 select count(*) from review where eidx=#{eidx}
+	</select>
+	
+	
 	
 </mapper>
 

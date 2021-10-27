@@ -1,6 +1,7 @@
 package com.deco.controller.action;
 
-import java.io.IOException;  
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.ReviewDao;
 import com.deco.dao.ShowsDao;
 import com.deco.dto.PageDto;
 import com.deco.dto.SessionDto;
@@ -49,9 +51,20 @@ public class ShowsListAction implements Action {
 			
 		
 		List<Shows> list = dao.getList(map);
+		
+		ReviewDao rdao = ReviewDao.getInstance();
+		
+		
+		List<Integer> reviewcnts = new ArrayList<>();
+		for(int i=0;i<list.size();i++) {  
+			int reviewCount=rdao.showsCount(list.get(i).getSidx());
+			reviewcnts.add(reviewCount);
+		}
+		
+		System.out.println(reviewcnts);
+		request.setAttribute("reviewcnts",reviewcnts);
+		request.setAttribute("pageDto", pageDto);
 		request.setAttribute("ShowsList", list);
-		System.out.println(list);
-		System.out.println(list.size());
 		forward.isRedirect = false;
 		forward.url="deco/showsList.jsp";
 		return forward;

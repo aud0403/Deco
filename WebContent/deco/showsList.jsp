@@ -21,7 +21,7 @@
   <h3>리스트</h3>
   <div>
   <c:set var="pno" value="${pageDto.currentPage}"/>
-    <c:forEach var="vo" items="${ShowsList}">
+    <c:forEach var="vo" items="${ShowsList}" varStatus="status">
     <ul>
     	<li> <a href ="shows.deco?sidx=${vo.sidx}&page=${pno}">${vo.name }</a></li>
     	<li>${vo.location }</li>
@@ -32,6 +32,7 @@
        <li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
        <li>${vo.addr }</li>
        <li>${vo.phone }</li>
+       <li>리뷰수 :${reviewcnts[status.index]} </li>
     </ul>
     </c:forEach>
   </div>

@@ -42,7 +42,7 @@ public class FoodAction implements Action {
 		Food fo=dao.getOne(idx);
 
 		ReviewDao rdao = ReviewDao.getInstance();      //변경 안함
-		List<Review> reList = rdao.getReview(idx);		//변경 안함
+		List<Review> reList = rdao.foodgetReview(idx);		//변경 안함
 		request.setAttribute("review", reList);			//변경 안함
 		
 		request.setAttribute("food", fo);    

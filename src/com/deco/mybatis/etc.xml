@@ -51,7 +51,7 @@
  		outimage=#{outimage}
  		where eidx=#{eidx}</if>
 	 <if test="inimage==null and outimage==null">
-	 	update shows set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
+	 	update etc set name=#{name},content=#{content},phone=#{phone}, addr=#{addr}, grade=#{grade}, 
  		menu=#{menu},opentime=#{opentime},closetime=#{closetime},location=#{location}
  		where eidx=#{eidx}</if>
 	 <if test="inimage!=null and outimage!=null">

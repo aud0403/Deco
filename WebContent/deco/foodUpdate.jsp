@@ -70,8 +70,8 @@
 	 <ul >
 	 	
 		<li>영업시간</li>
-		<li><input type ="text" name="opentime"value="${cafe.opentime}" required="required"></li>
-		<li><input type ="text" name="closetime"value="${cafe.closetime}" required="required"></li>
+		<li><input type ="text" name="opentime"value="${food.opentime}" required="required"></li>
+		<li><input type ="text" name="closetime"value="${food.closetime}" required="required"></li>
 	 </ul>
 	</li>
 	<li> 

@@ -76,7 +76,7 @@ public class EtcDao {
 	
 	public void gradeup(Etc etc) {
 		SqlSession mapper = factory.openSession();
-		mapper.update("shows.gradeup",etc);
+		mapper.update("etc.gradeup",etc);
 		mapper.commit();
 		mapper.close();
 		

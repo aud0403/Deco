@@ -179,7 +179,7 @@ function deleteCmt(reidx,idx,regrade,page,renickname){
       
       const yn = confirm('댓글 삭제하시겠습니까?');
       if(yn){
-         location.href='reviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
+         location.href='showsReviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
       }else{
          alert('댓글 삭제 취소합니다.');
       }

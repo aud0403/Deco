@@ -42,7 +42,7 @@ public class EtcAction implements Action {
 		Etc et =dao.getOne(idx);
 
 		ReviewDao rdao = ReviewDao.getInstance();
-		List<Review> etList = rdao.getReview(idx);
+		List<Review> etList = rdao.etcgetReview(idx);
 		request.setAttribute("review", etList);
 		
 		request.setAttribute("etc", et);    

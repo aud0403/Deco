@@ -96,7 +96,7 @@
 	 <li> 
 	  <ul >
 	  	<li> 예매 사이트</li>
-	  	<li> <input type ="text" name="link"value="${shows.link}" ></li>
+	  	<li> <input type ="text" name="link" value="${shows.link}" ></li>
 	  </ul>
 	 </li>
 </ul>

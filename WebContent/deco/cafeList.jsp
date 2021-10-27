@@ -1,3 +1,4 @@
+<%@page import="com.deco.dao.ReviewDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,7 +43,7 @@
   <h3>리스트</h3>
   <div>
   <c:set var="pno" value="${pageDto.currentPage}"/>
-    <c:forEach var="vo" items="${CafeList}">
+    <c:forEach var="vo" items="${CafeList}" varStatus="status">
     <ul>
     	<li> <a href ="cafe.deco?idx=${vo.idx}&page=${pno}">${vo.name }</a></li>
     	<li>${vo.location }</li>
@@ -53,6 +54,8 @@
        <li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
        <li>${vo.addr }</li>
        <li>${vo.phone }</li>
+       <li>리뷰수 :${reviewcnts[status.index]} </li>
+      
     </ul>
     </c:forEach>
   </div>

@@ -82,8 +82,8 @@
 	               		<input type="text" name="str_email01" id="str_email01" style="width:100px"> @ 
 						<input type="text" name="str_email02" id="str_email02" style="width:100px;">
 						<select style="width:100px;margin-right:10px" name="str_email02" id="selectEmail"> 
-						<option value="1">직접입력</option> 
-						<option value="naver.com" selected>naver.com</option> 
+						<option value="1" selected>직접입력</option> 
+						<option value="naver.com" >naver.com</option> 
 						<option value="hanmail.net">hanmail.net</option> 
 						<option value="hotmail.com">hotmail.com</option> 
 						<option value="nate.com">nate.com</option> 

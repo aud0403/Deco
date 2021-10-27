@@ -101,7 +101,7 @@ public class ReviewInsertAction implements Action {
 
 				System.out.println(dto);
 
-				dao.insert(dto);// 댓글 입력
+				dao.cafeInsert(dto);// 댓글 입력
 				// 여기서부터 리뷰평균점수 구하기(댓글 입력 있을때만 작동)
 
 				Cafe ca = Cdao.getOne(refidx);

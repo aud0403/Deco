@@ -58,7 +58,7 @@ public class ShowsReviewInsertAction implements Action {
 			  cgrade=sh.getGrade();
 			  System.out.println(cgrade);
 			  
-			  List<Review> reList = dao.getReview(sidx);
+			  List<Review> reList = dao.showsgetReview(sidx);
 			 
 			  System.out.println(cgrade+"/"+grade+"/"+reList.size());
 			  cgrade=(double)((cgrade*(reList.size()+1)-grade)/reList.size());
@@ -74,7 +74,7 @@ public class ShowsReviewInsertAction implements Action {
 			
 			 }else {
 		    request.setAttribute("message", "본인 글이 아니어서 삭제가 불가능합니다.");
-			 request.setAttribute("url", "cafe.deco?idx=" + sidx);
+			 request.setAttribute("url", "shows.deco?sidx=" + sidx);
 			 forward.isRedirect = false; 
 			 forward.url="error/alert.jsp"; 
 			 return forward;
@@ -94,7 +94,7 @@ public class ShowsReviewInsertAction implements Action {
 				String content = multi_request.getParameter("content");
 
 				Review dto = new Review();
-				dto.setRefidx(sidx);
+				dto.setSidx(sidx);
 				dto.setCategory(category);
 				dto.setNickname(nickname);
 				dto.setGrade(grade);
@@ -103,13 +103,13 @@ public class ShowsReviewInsertAction implements Action {
 
 				System.out.println(dto);
 
-				dao.insert(dto);// 댓글 입력
+				dao.showsInsert(dto);// 댓글 입력
 				// 여기서부터 리뷰평균점수 구하기(댓글 입력 있을때만 작동)
 
 				Shows sh = Sdao.getOne(sidx);
 				cgrade = sh.getGrade();
 
-				List<Review> reList = dao.getReview(sidx);
+				List<Review> reList = dao.showsgetReview(sidx);
 				if(reList.size()!=1) {
 				System.out.println(cgrade + "/" + grade + "/" + reList.size());
 				cgrade = (double) ((cgrade * (reList.size() - 1) + grade) / reList.size());

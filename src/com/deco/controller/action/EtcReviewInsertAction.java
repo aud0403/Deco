@@ -1,6 +1,6 @@
 package com.deco.controller.action;
 
-import java.io.IOException; 
+import java.io.IOException;  
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -58,7 +58,7 @@ public class EtcReviewInsertAction implements Action {
 			  cgrade=et.getGrade();
 			  System.out.println(cgrade);
 			  
-			  List<Review> reList = dao.getReview(eidx);
+			  List<Review> reList = dao.etcgetReview(eidx);
 			 
 			  System.out.println(cgrade+"/"+grade+"/"+reList.size());
 			  cgrade=(double)((cgrade*(reList.size()+1)-grade)/reList.size());
@@ -73,7 +73,7 @@ public class EtcReviewInsertAction implements Action {
 			
 			 }else {
 		    request.setAttribute("message", "본인 글이 아니어서 삭제가 불가능합니다.");
-			 request.setAttribute("url", "cafe.deco?idx=" + eidx);
+			 request.setAttribute("url", "etc.deco?eidx=" + eidx);
 			 forward.isRedirect = false; 
 			 forward.url="error/alert.jsp"; 
 			 return forward;
@@ -93,7 +93,7 @@ public class EtcReviewInsertAction implements Action {
 				String content = multi_request.getParameter("content");
 
 				Review dto = new Review();
-				dto.setRefidx(eidx);
+				dto.setEidx(eidx);
 				dto.setCategory(category);
 				dto.setNickname(nickname);
 				dto.setGrade(grade);
@@ -102,13 +102,13 @@ public class EtcReviewInsertAction implements Action {
 
 				System.out.println(dto);
 
-				dao.insert(dto);// 댓글 입력
+				dao.etcInsert(dto);// 댓글 입력
 				// 여기서부터 리뷰평균점수 구하기(댓글 입력 있을때만 작동)
 
 				Etc et = Edao.getOne(eidx);
 				cgrade = et.getGrade();
 
-				List<Review> reList = dao.getReview(eidx);
+				List<Review> reList = dao.etcgetReview(eidx);
 				if(reList.size()!=1) {
 				System.out.println(cgrade + "/" + grade + "/" + reList.size());
 				cgrade = (double) ((cgrade * (reList.size() - 1) + grade) / reList.size());

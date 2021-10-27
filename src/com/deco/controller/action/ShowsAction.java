@@ -42,7 +42,7 @@ public class ShowsAction implements Action {
 		Shows sh=dao.getOne(idx);
 
 		ReviewDao rdao = ReviewDao.getInstance();
-		List<Review> reList = rdao.getReview(idx);
+		List<Review> reList = rdao.showsgetReview(idx);
 		request.setAttribute("review", reList);
 		
 		request.setAttribute("shows", sh);    

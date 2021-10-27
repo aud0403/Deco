@@ -17,7 +17,7 @@
 <section>
 <hr>
 <div style="width:80%; margin:auto;">
-<h3>카페</h3>
+<h3>식당</h3>
 <form action="foodUpdate.deco?page=${page}"method="post">
 <input type="hidden" value="${food.fidx}" name="fidx">
 <ul > 

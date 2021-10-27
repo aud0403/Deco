@@ -75,7 +75,6 @@ public class FrontController extends HttpServlet {
 		System.out.println(spath);
 //		forward.setRedirect(false);
 //		forward.setUrl("./");
-		String url="./";
 		
 		if(spath.equals("/home_login.deco")) {			//메인
 			Action action = new HomeLoginAction();
