@@ -11,7 +11,9 @@
 <%@ include file="../top.jsp" %>
 <section>
 	
-	<div>
+<table>
+<tr>  
+	<td>
 		<c:forEach var="vo" items="${dibsCafe}">
 			<ul>
 		    	<li> <a href ="cafe.deco?idx=${vo.idx}">${vo.name }</a></li>
@@ -25,7 +27,54 @@
 		       	<li>주소 : ${vo.addr }</li>
 		    </ul>
 		</c:forEach>
-	</div>
+	</td>
+	<td>
+		<c:forEach var="vo" items="${dibsFood}">
+			<ul>
+		    	<li> <a href ="food.deco?fidx=${vo.fidx}">${vo.name }</a></li>
+		    	<li>${vo.location }</li>
+		    	<li>평점 : ${vo.grade }</li>
+		       	<li>${vo.content }</li>
+		       	<li>메뉴 : ${vo.menu }</li>
+		       	<li><img alt="food-out" src="/fimage/${vo.outimage}" width="150px" height="150px"> </li>
+		       	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
+		       	<li>연락처 : ${vo.phone }</li>
+		       	<li>주소 : ${vo.addr }</li>
+		    </ul>
+		</c:forEach>
+	</td>
+	<td>
+		<c:forEach var="vo" items="${dibsShows}">
+			<ul>
+		    	<li> <a href ="shows.deco?sidx=${vo.sidx}">${vo.name }</a></li>
+		    	<li>${vo.location }</li>
+		    	<li>평점 : ${vo.grade }</li>
+		       	<li>${vo.content }</li>
+		       	<li>메뉴 : ${vo.menu }</li>
+		       	<li><img alt="shows-out" src="/simage/${vo.outimage}" width="150px" height="150px"> </li>
+		       	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
+		       	<li>연락처 : ${vo.phone }</li>
+		       	<li>주소 : ${vo.addr }</li>
+		    </ul>
+		</c:forEach>
+	</td>
+	<td>
+		<c:forEach var="vo" items="${dibsEtc}">
+			<ul>
+		    	<li> <a href ="etc.deco?eidx=${vo.eidx}">${vo.name }</a></li>
+		    	<li>${vo.location }</li>
+		    	<li>평점 : ${vo.grade }</li>
+		       	<li>${vo.content }</li>
+		       	<li>메뉴 : ${vo.menu }</li>
+		       	<li><img alt="etc-out" src="/eimage/${vo.outimage}" width="150px" height="150px"> </li>
+		       	<li>영업시간 : ${vo.opentime} ~ ${vo.closetime}</li>
+		       	<li>연락처 : ${vo.phone }</li>
+		       	<li>주소 : ${vo.addr }</li>
+		    </ul>
+		</c:forEach>
+	</td>
+</tr>
+</table>	
 </section>
 <%@ include file="../bottom.jsp" %>	
 </body>

@@ -7,6 +7,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.deco.dto.Cafe;
 import com.deco.dto.Dibs;
+import com.deco.dto.Etc;
+import com.deco.dto.Food;
+import com.deco.dto.Shows;
 import com.deco.mybatis.SqlSessionBean;
 
 public class DibsDao {
@@ -32,6 +35,27 @@ public class DibsDao {
 		Cafe cafe = mapper.selectOne("getCafeDibs", idxCafe);
 		mapper.close();
 		return cafe;
+	}
+	public Food getFoodDibs(String fidx) {
+		int fidxFood = Integer.parseInt(fidx);
+		SqlSession mapper = factory.openSession();
+		Food food = mapper.selectOne("getFoodDibs", fidxFood);
+		mapper.close();
+		return food;
+	}
+	public Shows getShowsDibs(String sidx) {
+		int sidxShows = Integer.parseInt(sidx);
+		SqlSession mapper = factory.openSession();
+		Shows shows = mapper.selectOne("getShowsDibs", sidxShows);
+		mapper.close();
+		return shows;
+	}
+	public Etc getEtcDibs(String eidx) {
+		int eidxEtc = Integer.parseInt(eidx);
+		SqlSession mapper = factory.openSession();
+		Etc etc = mapper.selectOne("getEtcDibs", eidxEtc);
+		mapper.close();
+		return etc;
 	}
 	
 	public void updateCafeDibs(Map<String,String> map) {

@@ -12,6 +12,15 @@
   	<select id="getCafeDibs" resultType="Cafe" parameterType="int">
   		select * from cafe where idx=#{idxCafe}
   	</select>
+  	<select id="getFoodDibs" resultType="Food" parameterType="int">
+  		select * from food where fidx=#{fidxFood}
+  	</select>
+  	<select id="getShowsDibs" resultType="Shows" parameterType="int">
+  		select * from shows where sidx=#{sidxShows}
+  	</select>
+  	<select id="getEtcDibs" resultType="Etc" parameterType="int">
+  		select * from etc where eidx=#{eidxEtc}
+  	</select>
   	
   	<update id="updateCafeDibs" parameterType="String">
   		update dibs set dibCafe=#{dibCafe} where nickname=#{nickname}
