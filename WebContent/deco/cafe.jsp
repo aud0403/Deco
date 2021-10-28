@@ -6,167 +6,157 @@
 <head>
 <meta charset="UTF-8">
 <title>::deco::cafe</title>
-</head>
-<link rel="stylesheet" href="../css/cafe.css">
-<body>
 <%@ include file="../top.jsp" %>
-<h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
+<link rel="stylesheet" href="css/cafe.css">
+  <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<section>
+<div class="decoDetail">
+    <nav class="category">
+      <a href="cafeList.deco">Cafe</a>
+      <a href="foodList.deco">Restaurant</a>
+      <a href="showsList.deco">Show</a>
+      <a href="etcList.deco">Activity</a>
+    </nav>
+<form type="hidden" action="cafeUpdate.deco?page=${page}"method="post">
+<input type="hidden" value="${cafe.idx}" name="idx">
+ <ul class="detailContents">
+      <li class="detailTitle">
+        <div class="detailName">${cafe.name}</div>
+        <div class="detailText">${cafe.content}</div>
+      </li>
+      <li class="detailImg">
+        <div class="outImg">
+          <div class="detailName"><외부 사진></div>
+          <img src="/image/${cafe.inimage}" alt="cafe_in">
+        </div>
+        <div class="inImg">
+          <div class="detailName"><내부 사진></div>
+          <img src="/image/${cafe.outimage}" alt="cafe_out">
+        </div>
+        
+        
+      </li>
+      <li class="detailGrade">
+        <div class="detailName">평점</div>
+        <div>${cafe.grade}</div>
+      </li>
+      <li class="detailMenu">
+        <div class="detailName">대표 메뉴</div>
+        <ul class="menu"> <!--여기는 반복문으로 작성-->
+          <li class="detailText">${cafe.menu}</li>
+         
+        </ul>
+      </li>
+      <li class="detailTime">
+        <div class="detailName">운영 시간</div>
+        <div class="detailText">${cafe.opentime} ~ ${cafe.closetime}</div>
+      </li>
+      <li class="detailPhone">
+        <div class="detailName">연락처</div>
+        <div class="detailText">${cafe.phone}</div>
+      </li>
+      <li class="detailAddr">
+        <div class="detailName">위치정보</div>
+        <div class="detailText">${cafe.addr}</div>
+      </li>
+      <li class="detailLocation">
+        <div id="map" style="width:100%;height:350px;"></div>
+      </li>
+</ul>
 
+
+
+
+<div>
+   <input type="submit" value="수정" class="button small">
+   <input type="button" onclick="location.href='foodList.deco?page=${page}'" value="리스트" class="button small">
+</div>
+</form>
+<section>
+ <form action="dibsUpdate.deco">
+    <input type="hidden" name="idx" value="${cafe.idx }">
+    <input type="submit" value="찜목록 추가/삭제">
+ </form>
+</section>
+
+
+
+
+
+<div class="reviewBar">
+      <div class="reviewCnt">리뷰(${reviewCnt })</div>
+      <div class="reviewSubtitle">리뷰 작성</div>
+    </div>
+    <section class="makeReview">
+      <form action="reviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
+        <input type="hidden" value="${cafe.idx}" name="idx">  <!-- 이 값이 에요?  넵 -->
+        <input type="hidden" value="cafe" name="category">
+        <input type="hidden" name="nickname" readonly value="${user.nickname}">
+      <div class="makeReviewContents">
+        <div class="makeReviewText"> 
+          <textarea rows="6" cols="70" placeholder ="리뷰를 작성해주세요" class="input" name="content"required></textarea>
+        </div>
+        <div id="image_container"></div>
+        <!-- 평점,사진버튼,완료버튼 -->
+        <div class="makeReviewRight">
+          <div class="makeReviewGrade">
+            <div>평점</div>
+            <div> 
+              <input type="number" name="grade"class="gradeInput" max="5" min ="1" value="5" > 
+            </div>
+          </div>
+          <div class="makeReviewChooseImg">
+            <label for="pic"><i class="fas fa-image"></i></label>
+            <input type="file" id="pic" name="pic" accept="image/*" onchange="setThumbnail(event);" style="display:none">
+          </div>
+          <input type="submit" value="완료" class="makeReviewBtn">
+        </div>
+      </div>
+      </form>
+    </section>
+
+<section class="reviewLists">
+<c:forEach var="re" items="${review}">
+<div class="reviewList">
+        <div class="reviewContents">
+          <ul class="reviewNameGrade">
+            <li>${re.nickname}</li>
+            <li>
+              <span>평점 : </span>
+              <span>${re.grade}</span>
+<a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}','${page}','${re.nickname}')">댓글삭제</a>
+            </li>
+          </ul>
+          <div class="reviewText">
+            ${re.content}
+          </div>
+        </div>
+        <div>
+          <img class="reviewImg" src="/reviewimage/${re.imgfile}"></img>
+        </div>  
+      </div>
+   </c:forEach>
+      </section> 
+   
 
 
 
 
 <section>
-<hr>
-<div style="width:80%; margin:auto;">
-<h3>카페</h3>
-<form action="cafeUpdate.deco?page=${page}"method="post">
-<input type="hidden" value="${cafe.idx}" name="idx">
-<ul > 
-   <li> 
-    <ul >
-       <li>지역</li>
-       <li>${cafe.location}</li>
-       <li>상호</li>
-       <li>${cafe.name}</li>
-       <li>평점</li>
-       <li name="grade">${cafe.grade}</li>
-    </ul>
-   </li>
-   <li> 
-      <ul >
-       <li>내용</li>
-       <li>${cafe.content}</li>
-      </ul>
-   </li>
-   <li> 
-       <ul>
-        <li> 메뉴</li>
-        <li>${cafe.menu}</li>
-       </ul>
-   </li>
-   <li> 
-    <ul>
-    <li>메뉴 사진</li>
-     <li>
-    <img alt="cafe_in" src="/image/${cafe.inimage}" width="150px" height="150px"><br></li>
-    <li>외관 사진</li>
-    <li>
-    <img alt="cafe-out" src="/image/${cafe.outimage}">
-     </li>
-    </ul>
-   </li>
-   <li> 
-    <ul >
-       
-      <li>영업시간</li>
-      <li>${cafe.opentime} ~ ${cafe.closetime}</li>
-    </ul>
-   </li>
-   <li> 
-      <ul >
-      
-      <li>위치</li> 
-       <li>
-         <div id="map" style="width:100%;height:350px;"></div>
-         </li>
-      
-         <li> 주소 </li>
-         <li>${cafe.addr}</li>
-      </ul>
-   </li>
-    <li> 
-     <ul >
-        <li> 전화 번호</li>
-        <li>${cafe.phone}</li>
-     </ul>
-    </li>
-</ul>
-<div>
-   <input type="submit" value="수정" class="button small">
-   <input type="button" onclick="location.href='home.jsp'" value="메인화면" class="button small">
-   <input type="button" onclick="location.href='cafeList.deco?page=${page}'" value="리스트" class="button small">
-</div>
- </form>
- <form action="dibsUpdate.deco">
-    <input type="hidden" name="idx" value="${cafe.idx }">
-    <input type="submit" value="찜목록 추가/삭제">
- </form>
-</div>
-<!--  -------------------------------------------------------  -->
-<!-- 리뷰 -->
+
 <form action="reviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
    <input type="hidden" value="${cafe.idx}" name="idx">  <!-- 이 값이 에요?  넵 -->
    <input type="hidden" value="cafe" name="category">
    <hr class="line">
-   <div>
-   <span> 리뷰</span>
-   <span>리뷰수{}</span>
-   </div>
-   <hr class="line">
- <ul>
- <li>
-  <ul>
-     <li> 작성자</li>
-     <li> <input type="text" name="nickname" readonly value="${user.nickname}">  </li>
-      <li> 점수</li>
-      <li> <input type="number" name="grade"class="input" max="5" min ="1"> </li>
-  </ul>
- </li>
- <li> 
-    <ul>
-       <li> 
-          <textarea rows="3" cols="80" placeholder ="리뷰를 작성해주세요"
-          class="input" name="content"required></textarea>
-       </li>
-    </ul>
- </li>
- <li>
-    <ul>
-    <li> 
-       <input type="file" name="pic" accept="image/*" placeholder="이미지 파일을 선택해주세요"
-       onchange="setThumbnail(event);"> 
-    </li>
-    <li> 
-     <div id="image_container"></div>
-    </li>
-    <li> 
-       <input type="submit" value="저장" class="button small">
-      <input type="reset" value="취소" class="button small">
-    </li>
-    </ul>
-  </li>
+   
+ 
 
- <c:forEach var="re" items="${review}">
-  <li> 
-    <ul>
-       <li>${re.nickname}</li>
-       <li> 리뷰점수 :  ${re.grade}</li>
-       
-    </ul>
-  </li>
-   <li> 
-      <ul> 
-        <li> 
-         <pre> ${re.content}</pre>
-        </li>
-      <li><a href="javascript:deleteCmt('${re.idx}','${cafe.idx}','${re.grade}','${page}','${re.nickname}')">삭제</a></li>
-      </ul>
-   </li>
-   <li> 
-      <ul>
-         <li> 
-            <img alt="ca-re" src="/reviewimage/${re.imgfile}">
-         </li>
-      </ul>
-   </li>
-   </c:forEach> 
-</ul>
  </form>
 </section>
-<hr>
-
-
+</div>
+</section>
 <script type="text/javascript">
 function deleteCmt(reidx,idx,regrade,page,renickname){
       console.log(reidx);console.log(idx);
@@ -223,6 +213,7 @@ geocoder.addressSearch('${cafe.addr}', function(result, status) {
 });    
    </script>
 <!-- enctype="multipart/form-data" -->
-<%@ include file="../bottom.jsp" %>
+
 </body>
+<%@ include file="../bottom.jsp" %>
 </html>

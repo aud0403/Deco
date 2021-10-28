@@ -7,6 +7,10 @@
   	<select id="getList" resultType="Review" parameterType="double">
 		select * from review order by grade desc
 	</select>
+
+  	<select id="getList10" resultType="Review" parameterType="java.util.Map">
+		select * from review order by grade desc limit #{startNo},#{pageSize}
+	</select>
 	
 	<select id="getOne" resultType="Review" parameterType="int">
  		select * from review where idx=#{idx}
@@ -31,42 +35,46 @@
  	<insert id="cafeInsert" parameterType="Review">
  		insert into review (nickname, grade, content, category,refidx,imgfile)
 		values(#{nickname}, #{grade}, #{content}, #{category},#{refidx},#{imgfile})
-		
 	</insert>
 	<insert id="foodInsert" parameterType="Review">
  		insert into review (nickname, grade, content, category,fidx,imgfile)
 		values(#{nickname}, #{grade}, #{content}, #{category},#{fidx},#{imgfile})
-		
+
 	</insert>
 	<insert id="showsInsert" parameterType="Review">
  		insert into review (nickname, grade, content, category,sidx,imgfile)
 		values(#{nickname}, #{grade}, #{content}, #{category},#{sidx},#{imgfile})
-		
+
 	</insert>
 	<insert id="etcInsert" parameterType="Review">
  		insert into review (nickname, grade, content, category,eidx,imgfile)
 		values(#{nickname}, #{grade}, #{content}, #{category},#{eidx},#{imgfile})
-		
+
 	</insert>
-	
  	<delete id="delete" parameterType="int">
 		delete from review where idx=#{idx}
 	</delete>
+	
+	
+	<!-- 개인 리뷰 가져오기 닉네임으로 -->
+	<select id="getCount"  resultType="int" parameterType="String">
+	 select count(*) from review where nickname=#{nickname}     
+	</select>
+
 	<select id="cafeCount"  resultType="int" parameterType="int">
 	 select count(*) from review where refidx=#{refidx}     
 	</select>
 	<select id="foodCount" resultType="int" parameterType="int">
 	 select count(*) from review where fidx=#{fidx}
 	</select>
-	
+
 	<select id="showsCount" resultType="int" parameterType="int">
 	 select count(*) from review where sidx=#{sidx}
 	</select>
-	
+
 	<select id="etcCount" resultType="int" parameterType="int">
 	 select count(*) from review where eidx=#{eidx}
 	</select>
-	
 	
 	
 </mapper>

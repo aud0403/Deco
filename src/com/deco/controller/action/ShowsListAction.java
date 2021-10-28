@@ -53,18 +53,22 @@ public class ShowsListAction implements Action {
 		List<Shows> list = dao.getList(map);
 		
 		ReviewDao rdao = ReviewDao.getInstance();
-		
-		
+
+
 		List<Integer> reviewcnts = new ArrayList<>();
 		for(int i=0;i<list.size();i++) {  
 			int reviewCount=rdao.showsCount(list.get(i).getSidx());
 			reviewcnts.add(reviewCount);
 		}
-		
+
 		System.out.println(reviewcnts);
 		request.setAttribute("reviewcnts",reviewcnts);
 		request.setAttribute("pageDto", pageDto);
+		
+		
+		
 		request.setAttribute("ShowsList", list);
+		
 		forward.isRedirect = false;
 		forward.url="deco/showsList.jsp";
 		return forward;

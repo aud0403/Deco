@@ -21,7 +21,6 @@
   	<select id="getEtcDibs" resultType="Etc" parameterType="int">
   		select * from etc where eidx=#{eidxEtc}
   	</select>
-  	
   	<update id="updateCafeDibs" parameterType="String">
   		update dibs set dibCafe=#{dibCafe} where nickname=#{nickname}
   	</update>

@@ -11,11 +11,11 @@
 <body>
 <%@ include file="../top.jsp" %>
 <section>
-<h1>카페 업데이트</h1>
+<h1>이색</h1>
 <hr>
 <form  method="post" action="etcModify.deco?page=${page}" enctype="multipart/form-data" >
 <div style="width:80%; margin:auto;">
-<h3>이색</h3>
+<h3>카페</h3>
 <input type="hidden" name="eidx"value="${etc.eidx}">
 <ul > 
 	<li> 

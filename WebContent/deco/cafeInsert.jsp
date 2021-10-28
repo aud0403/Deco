@@ -6,16 +6,121 @@
 <head>
 <meta charset="UTF-8">
 <title>::deco::cafe등록</title>
-</head>
-<body>
 <%@ include file="../top.jsp" %>
+</head>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/cafeInsert.css">
+<body>
 <section>
 		<h3>카페 추천지 등록</h3>
 		<form  method="post" action="cafeInsertAction.deco" enctype="multipart/form-data" >
-		<table>
+  <article>
+        <div class="container" role="main">
+            <div class="logo-wrap">
+                <h1 class="logo_txt">CAFE</h1>
+            </div>
+            <div class="form_wrap">
+                <form name="form" id="form" role="form" method="post"
+                    action="${pageContext.request.contextPath}/board/saveBoard">
+                    <div class="form-control-wrap">
+                        <label for="title">지역*</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="강남">
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="name">상호*</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="">
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="grade">평점*</label>
+                        <input type="number" class="form-control" name="grade" id="grade" value="5" max="5" min="1">
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="menu1">메뉴*</label>
+                            <div class="menu_container">
+                                <div class="menu_123">
+                                    <div class="menu_el">
+                                        메뉴1<input type="text" class="form-control" name="menu1" id="menu1" placeholder="ex) 아메리카노">
+                                    </div>
+                                    <div class="menu_el">
+                                        가격1<input type="text" class="form-control" name="price1" id="price1" placeholder="ex) 3,000">원
+                                    </div>
+                                </div>
+                                <div class="menu_123">
+                                    <div class="menu_el">
+                                        메뉴2<input type="text" class="form-control" name="menu2" id="menu2" placeholder="">
+                                    </div>
+                                    <div class="menu_el">
+                                        가격2<input type="text" class="form-control" name="price2" id="price2" placeholder="">원
+                                    </div>
+                                </div>
+                                <div class="menu_123">
+                                    <div class="menu_el">
+                                        메뉴3<input type="text" class="form-control" name="menu3" id="menu3" placeholder="">
+                                    </div>
+                                    <div class="menu_el">
+                                        가격3<input type="text" class="form-control" name="price3" id="price3" placeholder="">원
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="content">내용*</label>
+                        <textarea class="form-control" rows="5" name="content" id="content"
+                            placeholder="내용을 입력해 주세요"></textarea>
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="openTime" class="ft-tit">영업시간*</label>
+                        <div class="form-time-wrap">
+                            <span class="ft-tit">Open</span>
+                            <input type="time" class="form-time" name="openTime" id="openTime">
+                            <span class="ft-tit">Close</span>
+                            <input type="time" class="form-time" name="closeTime" id="closeTime">
+                        </div>
+                    </div>
+                    <div class="form-control-wrap">
+                        <div class="form-img">
+                            <div>
+                                <div for="" class="pre-thumbnail">외부 사진*</div>
+                                <label for="file-upload" class="file-upload">업로드</label>
+                                <div id="image_container"></div>
+                                <input type="file" id="file-upload" accept="image/*">
+                            </div>
+                            <div id="view-thumbnail" class="thubmbail"></div>
+                        </div>
+                    </div>
+                    <div class="form-control-wrap">
+                        <div class="form-img">
+                            <div >
+                                <div for="" class="pre-thumbnail">내부 사진*</div>
+                                <label for="file-upload2" class="file-upload">업로드</label>
+                                <input type="file" id="file-upload2" accept="image/*">
+                            </div>
+                            <div id="view-thumbnail2" class="thubmbail"></div>
+                        </div>
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="member_post">주소*</label>
+                        <input name="addr" type="button" id="member_post" value="주소 찾기" class="member_post" onclick="findAddr()" >
+                        <input name="addr" id="member_addr" class="joinInput">
+                        <!-- <input type="text" class="form-control" name="tag" id="tag" placeholder=""> -->
+                    </div>
+                    <div class="form-control-wrap">
+                        <label for="tag">전화번호*</label>
+                        <input type="text" class="form-control" name="tag" id="tag" placeholder="010XXXXXXXX">
+                    </div>
+                    <div class="form-btn">
+                        <input type="submit" value="등록 완료" class="submit">
+                    </div>
+                </form>
+            </div>
+    </article>
+            </form>
+
+
+		<!-- <table>
 		<tr>
 					<td><label>카페 이름</label></td>
-					<!--  required 필수 입력  , readonly : 읽기만.-->
+					 required 필수 입력  , readonly : 읽기만.
 					<td><input type="text" name="name" placeholder="카페 이름(필수)"
 						required></td>
 				</tr>
@@ -61,7 +166,7 @@
 					<td> <div id="image_container"></div></td>
 				</tr>
 				<tr>
-					<td><label>외부 사진 등록</label></td>
+					<td><label>내부 사진 등록</label></td>
 					<td><input type="file" name="inpic" accept="image/*" placeholder="내부 이미지 파일을 선택해주세요"
 					onchange="setThumbnail(event);"></td>
 					<td><div id="image_container"></div></td>
@@ -77,11 +182,10 @@
 				
 				</table>
 				
-				
+				 -->
 
-</form>
+            <script src="./upload.js"></script>
 </section>
-<%@ include file="../bottom.jsp" %>
 <script type="text/javascript">
 function setThumbnail(event) {
 	var reader = new FileReader(); 
@@ -94,4 +198,5 @@ function setThumbnail(event) {
 </script>
 
 </body>
+<%@ include file="../bottom.jsp" %>
 </html>

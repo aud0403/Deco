@@ -65,17 +65,16 @@ public class EtcListAction implements Action {
 			map.put("location", location);
 			list = dao.getLocation(map);
 		}
-		
 		ReviewDao rdao = ReviewDao.getInstance();
-		
-		
+
+
 		List<Integer> reviewcnts = new ArrayList<>();
 		for(int i=0;i<list.size();i++) {  
 			int reviewCount=rdao.etcCount(list.get(i).getEidx());
 			reviewcnts.add(reviewCount);
 		}
 		System.out.println(reviewcnts);
-		
+
 		request.setAttribute("reviewcnts",reviewcnts);
 		request.setAttribute("pageDto", pageDto);
 		request.setAttribute("EtcList", list);

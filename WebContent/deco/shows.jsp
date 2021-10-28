@@ -5,172 +5,149 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>::deco::공연</title>
+<title>::deco::이색체험</title>
 </head>
-<link rel="stylesheet" href="../css/cafe.css">
+<title>::deco::cafe</title>
+<link rel="stylesheet" href="css/cafe.css">
 <body>
-<%@ include file="../top.jsp" %>
-<h1 id="title"><img id="icon" alt="icon" src="../img/icon2.png">deco</h1>
-
-
-
-
 
 <section>
-<hr>
-<div style="width:80%; margin:auto;">
-<h3>카페</h3>
-<form action="showsUpdate.deco?page=${page}"method="post">
+<div class="decoDetail">
+    <nav class="category">
+      <a href="cafeList.deco">Cafe</a>
+      <a href="foodList.deco">Restaurant</a>
+      <a href="showsList.deco">Show</a>
+      <a href="etcList.deco">Activity</a>
+    </nav>
+<form type="hidden" action="showsUpdate.deco?page=${page}"method="post">
 <input type="hidden" value="${shows.sidx}" name="sidx">
-<ul > 
-   <li> 
-    <ul >
-       <li>지역</li>
-       <li>${shows.location}</li>
-       <li>상호</li>
-       <li>${shows.name}</li>
-       <li>평점</li>
-       <li name="grade">${shows.grade}</li>
-    </ul>
-   </li>
-   <li> 
-      <ul >
-       <li>내용</li>
-       <li>${shows.content}</li>
-      </ul>
-   </li>
-   <li> 
-       <ul>
-        <li> 메뉴</li>
-        <li>${shows.menu}</li>
-       </ul>
-   </li>
-   <li> 
-    <ul>
-    <li>메뉴 사진</li>
-     <li>
-    <img alt="shows_in" src="/simage/${shows.inimage}" width="150px" height="150px"><br></li>
-    <li>외관 사진</li>
-    <li>
-    <img alt="shows-out" src="/simage/${shows.outimage}">
-     </li>
-    </ul>
-   </li>
-   <li> 
-    <ul >
-       
-      <li>영업시간</li>
-      <li>${shows.opentime} ~ ${shows.closetime}</li>
-    </ul>
-   </li>
-   <li> 
-      <ul >
-      
-      <li>위치</li> 
-       <li>
-         <div id="map" style="width:100%;height:350px;"></div>
-         </li>
-      
-         <li> 주소 </li>
-         <li>${shows.addr}</li>
-      </ul>
-   </li>
-    <li> 
-     <ul >
-        <li> 전화 번호</li>
-        <li>${shows.phone}</li>
-     </ul>
-    </li>
-    <li> 
-     <ul >
-        <li> <a href="${shows.link}">사이트 바로가기</a> </li>
+ <ul class="detailContents">
+      <li class="detailTitle">
+        <div class="detailName">${shows.name}</div>
+        <div class="detailText">${shows.content}</div>
+      </li>
+      <li class="detailImg">
+       <%--  <div class="outImg">
+          <div class="detailName"><외부 사진></div>
+          <img src="/simage/${shows.inimage}" alt="etc_in">
+        </div> --%>
+        <div class="inImg">
+          <div class="detailName">포스터</div>
+          <img src="/simage/${shows.outimage}" alt="etc_out">
+        </div>
         
-     </ul>
-    </li>
+        
+      </li>
+      <li class="detailGrade">
+        <div class="detailName">평점</div>
+        <div>${shows.grade}</div>
+      </li>
+      <li class="detailMenu">
+        <div class="detailName">대표 메뉴</div>
+        <ul class="menu"> <!--여기는 반복문으로 작성-->
+          <li class="detailText">${shows.menu}</li>
+         
+        </ul>
+      </li>
+      <li class="detailTime">
+        <div class="detailName">운영 시간</div>
+        <div class="detailText">${shows.opentime} ~ ${shows.closetime}</div>
+      </li>
+      <li class="detailPhone">
+        <div class="detailName">연락처</div>
+        <div class="detailText">${shows.phone}</div>
+      </li>
+      <li class="detailAddr">
+        <div class="detailName">위치정보</div>
+        <div class="detailText">${shows.addr}</div>
+      </li>
+      <li class="detailAddr">
+        <div class="detailName"><a href="${shows.link}">바로가기</a></div>
+        
+      </li>
+      <li class="detailLocation">
+        <div id="map" style="width:100%;height:350px;"></div>
+      </li>
 </ul>
+
+
+
+
 <div>
-   <input type="submit" value="수정" class="button small">
-   <input type="button" onclick="location.href='home.jsp'" value="메인화면" class="button small">
+	<c:if test="${user.nickname eq frontman}">
+   		<input type="submit" value="수정" class="button small">
+	</c:if>
    <input type="button" onclick="location.href='showsList.deco?page=${page}'" value="리스트" class="button small">
 </div>
- </form>
+</form>
+  <section>
  <form action="showsDibsUpdate.deco">
     <input type="hidden" name="idx" value="${shows.sidx }">
     <input type="submit" value="찜목록 추가/삭제">
  </form>
-</div>
-<!--  -------------------------------------------------------  -->
-<!-- 리뷰 -->
-<form action="showsReviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
-   <input type="hidden" value="${shows.sidx}" name="idx">  <!-- 이 값이 에요?  넵 -->
-   <input type="hidden" value="shows" name="category">
-   <hr class="line">
-   <div>
-   <span> 리뷰</span>
-   <span>리뷰수{}</span>
-   </div>
-   <hr class="line">
- <ul>
- <li>
-  <ul>
-     <li> 작성자</li>
-     <li> <input type="text" name="nickname" readonly value="${user.nickname}">  </li>
-      <li> 점수</li>
-      <li> <input type="number" name="grade"class="input" max="5" min ="1"> </li>
-  </ul>
- </li>
- <li> 
-    <ul>
-       <li> 
-          <textarea rows="3" cols="80" placeholder ="리뷰를 작성해주세요"
-          class="input" name="content"required></textarea>
-       </li>
-    </ul>
- </li>
- <li>
-    <ul>
-    <li> 
-       <input type="file" name="pic" accept="image/*" placeholder="이미지 파일을 선택해주세요"
-       onchange="setThumbnail(event);"> 
-    </li>
-    <li> 
-     <div id="image_container"></div>
-    </li>
-    <li> 
-       <input type="submit" value="저장" class="button small">
-      <input type="reset" value="취소" class="button small">
-    </li>
-    </ul>
-  </li>
-
- <c:forEach var="re" items="${review}">
-  <li> 
-    <ul>
-       <li>${re.nickname}</li>
-       <li> 리뷰점수 :  ${re.grade}</li>
-       
-    </ul>
-  </li>
-   <li> 
-      <ul> 
-        <li> 
-         <pre> ${re.content}</pre>
-        </li>
-      <li><a href="javascript:deleteCmt('${re.idx}','${shows.sidx}','${re.grade}','${page}','${re.nickname}')">삭제</a></li>
-      </ul>
-   </li>
-   <li> 
-      <ul>
-         <li> 
-            <img alt="sh-re" src="/reviewimage/${re.imgfile}">
-         </li>
-      </ul>
-   </li>
-   </c:forEach> 
-</ul>
- </form>
 </section>
-<hr>
+
+
+
+
+
+<div class="reviewBar">
+      <div class="reviewCnt">리뷰(${reviewCnt })</div>
+      <div class="reviewSubtitle">리뷰 작성</div>
+    </div>
+    <section class="makeReview">
+      <form action="showsReviewInsert.deco?page=${page}"method="post" enctype="multipart/form-data">
+        <input type="hidden" value="${shows.sidx}" name="idx">  <!-- 이 값이 에요?  넵 -->
+        <input type="hidden" value="shows" name="category">
+        <input type="hidden" name="nickname" readonly value="${user.nickname}">
+      <div class="makeReviewContents">
+        <div class="makeReviewText"> 
+          <textarea rows="6" cols="70" placeholder ="리뷰를 작성해주세요" class="input" name="content"required></textarea>
+        </div>
+        <div id="image_container"></div>
+        <!-- 평점,사진버튼,완료버튼 -->
+        <div class="makeReviewRight">
+          <div class="makeReviewGrade">
+            <div>평점</div>
+            <div> 
+              <input type="number" name="grade"class="gradeInput" max="5" min ="1" value="5" > 
+            </div>
+          </div>
+          <div class="makeReviewChooseImg">
+            <label for="pic"><i class="fas fa-image"></i></label>
+            <input type="file" id="pic" name="pic" accept="image/*" onchange="setThumbnail(event);" style="display:none">
+          </div>
+          <input type="submit" value="완료" class="makeReviewBtn">
+        </div>
+      </div>
+      </form>
+    </section>
+
+<section class="reviewLists">
+<c:forEach var="re" items="${review}">
+<div class="reviewList">
+        <div class="reviewContents">
+          <ul class="reviewNameGrade">
+            <li>${re.nickname}</li>
+            <li>
+              <span>평점 : </span>
+              <span>${re.grade}</span>
+<a href="javascript:deleteCmt('${re.idx}','${shows.sidx}','${re.grade}','${page}','${re.nickname}')">삭제</a>
+            </li>
+          </ul>
+          <div class="reviewText">
+            ${re.content}
+          </div>
+        </div>
+        <div>
+          <img class="reviewImg" src="/reviewimage/${re.imgfile}"></img>
+        </div>  
+      </div>
+   </c:forEach>
+      </section> 
+   </div>
+</section>
+
 
 
 <script type="text/javascript">
@@ -179,7 +156,7 @@ function deleteCmt(reidx,idx,regrade,page,renickname){
       
       const yn = confirm('댓글 삭제하시겠습니까?');
       if(yn){
-         location.href='showsReviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
+         location.href='etcReviewInsert.deco?del=&reidx='+reidx+'&idx='+idx+'&regrade='+regrade+'&page='+page+'&renickname='+renickname;
       }else{
          alert('댓글 삭제 취소합니다.');
       }
@@ -209,7 +186,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 // 주소로 좌표를 검색합니다
-geocoder.addressSearch('${shows.addr}', function(result, status) {
+geocoder.addressSearch('${etc.addr}', function(result, status) {
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
         var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -220,7 +197,7 @@ geocoder.addressSearch('${shows.addr}', function(result, status) {
         });
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${shows.name}</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${etc.name}</div>'
         });
         infowindow.open(map, marker);
         // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다

@@ -66,16 +66,17 @@ public class CafeListAction implements Action {
 			list = dao.getLocation(map);
 		}
 		
+		   ReviewDao rdao = ReviewDao.getInstance();
+		      
+		      
+		      List<Integer> reviewcnts = new ArrayList<>();
+		      for(int i=0;i<list.size();i++) {  
+		         int reviewCount=rdao.cafeCount(list.get(i).getIdx());
+		         reviewcnts.add(reviewCount);
+		      }
 		
 		
-		ReviewDao rdao = ReviewDao.getInstance();
 		
-		
-		List<Integer> reviewcnts = new ArrayList<>();
-		for(int i=0;i<list.size();i++) {  
-			int reviewCount=rdao.cafeCount(list.get(i).getIdx());
-			reviewcnts.add(reviewCount);
-		}
 		request.setAttribute("reviewcnts",reviewcnts);
 		request.setAttribute("pageDto", pageDto);
 		request.setAttribute("CafeList", list);

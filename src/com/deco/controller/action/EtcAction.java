@@ -44,7 +44,8 @@ public class EtcAction implements Action {
 		ReviewDao rdao = ReviewDao.getInstance();
 		List<Review> etList = rdao.etcgetReview(idx);
 		request.setAttribute("review", etList);
-		
+		int reviewCnt =  rdao.etcCount(idx);
+		request.setAttribute("reviewCnt", reviewCnt);
 		request.setAttribute("etc", et);    
 		request.setAttribute("page", pageNo);
 		

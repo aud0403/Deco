@@ -33,7 +33,8 @@ public class ShowsAction implements Action {
 	       return forward;
 	    }
 		
-	
+	    String frontman="frontman";
+	    
 		int idx = Integer.parseInt(request.getParameter("sidx"));
 		
 		if(request.getParameter("page")==null) pageNo=1;
@@ -44,7 +45,10 @@ public class ShowsAction implements Action {
 		ReviewDao rdao = ReviewDao.getInstance();
 		List<Review> reList = rdao.showsgetReview(idx);
 		request.setAttribute("review", reList);
+		int reviewCnt =  rdao.showsCount(idx);
 		
+		request.setAttribute("frontman", frontman);
+		request.setAttribute("reviewCnt", reviewCnt);
 		request.setAttribute("shows", sh);    
 		request.setAttribute("page", pageNo);
 		

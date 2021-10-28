@@ -1,13 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;  
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.CafeDao;
 import com.deco.dao.ShowsDao;
+import com.deco.dto.Cafe;
 import com.deco.dto.SessionDto;
 import com.deco.dto.Shows;
 import com.oreilly.servlet.MultipartRequest;
@@ -57,7 +59,7 @@ public class ShowsModifyAction implements Action {
 		String outimage = multi_request.getFilesystemName("outimage");		
 		String inimage = multi_request.getFilesystemName("inimage");
 		String link = multi_request.getParameter("link");
-		
+
 		System.out.println(link);
 		
 		Shows dto = new Shows();
@@ -74,7 +76,6 @@ public class ShowsModifyAction implements Action {
 		dto.setOutimage(outimage);
 		dto.setInimage(inimage);
 		dto.setLink(link);
-		
 		
 		ShowsDao dao = ShowsDao.getInstance();
 		dao.update(dto);

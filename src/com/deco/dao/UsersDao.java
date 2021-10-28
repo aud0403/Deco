@@ -27,6 +27,17 @@ public class UsersDao {
 		return users;
 	}
 	
+	
+	public Users getUser2(Users user) {
+		SqlSession mapper = factory.openSession();
+		mapper.update("users.passwordCheck", user);
+		mapper.close();
+		return user;
+	}
+	
+	
+	
+	
 	public void insert(Users users) {
 		SqlSession mapper = factory.openSession();
 		mapper.insert("users.insert", users);
@@ -74,6 +85,27 @@ public class UsersDao {
 		mapper.commit();
 		mapper.close();
 	}
+	public Users emailCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users users = new Users();
+		users = mapper.selectOne("users.emailCheck", map);
+		mapper.close();
+		return users;
+	}
+	public Users passwordCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users users = new Users();
+		users = mapper.selectOne("users.passwordCheck", map);
+		mapper.close();
+		return users;
+	}
 	
+	public Users changeCheck(Map<String, String> map) {
+		SqlSession mapper = factory.openSession();
+		Users user = new Users();
+		user = mapper.selectOne("users.passwordupdate",user);
+		mapper.close();
+		return user;
+	}
 	
 }

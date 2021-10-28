@@ -1,13 +1,15 @@
 package com.deco.controller.action;
 
-import java.io.IOException;   
+import java.io.IOException; 
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.deco.dao.CafeDao;
 import com.deco.dao.EtcDao;
+import com.deco.dto.Cafe;
 import com.deco.dto.Etc;
 import com.deco.dto.SessionDto;
 import com.oreilly.servlet.MultipartRequest;

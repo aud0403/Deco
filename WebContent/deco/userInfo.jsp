@@ -9,52 +9,60 @@
 <meta charset="UTF-8">
 <title>::deco::회원정보</title>
 <!-- 스타일 참고  -->
-<link rel="stylesheet" href="">
+<link rel="stylesheet" href="css/userInfo.css">
 </head>
 <body>
 <%@ include file="../top.jsp" %>
-<section>
-	<div style="width: 70%; margin: auto;">
-		<h3>Deco :: 회원정보</h3>  <!-- 이메일 , 지역 -->
-			<table>
-				<tr>
-					<td>닉네임</td>
-					<td>${dto.nickname }</td>   	<!-- 닉네임은 변경할수 없고 읽기만 -->
-				</tr>
-				<tr>
-					<td>이름</td>
-				
-					<td>${dto.name }</td>   	<!-- 이름은 변경할수 없고 읽기만 -->
-				</tr>
-				<tr>
-					<td>이메일</td>
-					<td>${dto.email }</td>
-				</tr>
-					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
-				<tr>
-				    <td>성별</td>
-					<td>${dto.gender }</td>
-					
-					<td>나이</td>
-					<td>${dto.age }</td>
-					<!-- value는 기본값. type="number" 일 때는 min,max 속성 설정 가능.-->
-				</tr>
-				<tr>
-					<td>전화번호</td>
-					<td>${dto.phone }</td>
-				</tr>
-				<tr>
-					<td>주소</td>
-					<td>${dto.addr }</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" style="text-align: center">
-					<input type="button" value="수정하기" onclick = "location.href='userInfoUpdate.deco'"> 	
-				</tr>
-			</table>
-	</div>
-</section>
+<form action="userinfoUpdate.deco" name="frmReg" method="post" class="decoJoin">
+  <div class="decoJoinLogo">회원정보</div>
+    <ul class="joinContens">
+      <li class="joinEmail">
+         
+        <div class="joinTitle">이메일</div>
+        <input type="text" name="email" id="str_email01" class="joinInput" readonly value="${dto.email }"> 
+      </li>
+      
+      <!-- <li>
+        <div class="joinTitle">비밀번호</div>
+        <input type="password" name="password" placeholder="비밀번호" class="joinInput">
+      </li>
+      <li>
+        <div class="joinTitle">비밀번호 확인</div>
+        <input type="password" name="password1" placeholder="비밀번호 확인" class="joinInput">
+      </li> -->
+      <li>
+        <div class="joinTitle">이름</div>
+        <input type="text" name="name" placeholder="이름" class="joinInput" readonly value="${dto.name }">
+      </li>
+      <li class="joinGenderAge">
+        <div class="gender">
+          <div class="joinTitle">성별</div>
+          <div class="genderInput">
+            <input type="text" value="${dto.gender }" name="gender" id="male" class="joinInput" readonly>
+          </div>
+        </div>
+        <div class="age">
+          <div class="joinTitle">나이</div>
+          <input type="number" name="age" min="10" max="99" class="joinInput" readonly	value="${dto.age }">
+        </div>
+      </li>
+      <li>
+        <div class="joinTitle">전화번호</div>
+        <input type="text" name="phone" placeholder="전화번호를 입력하세요" class="joinInput" readonly value="${dto.phone }">
+      </li>
+      <li class="joinAddrLi">
+        <div class="joinTitle">주소</div>
+        <input name="addr" id="member_addr" class="joinInput" readonly value="${dto.addr }">
+      </li>
+      <li>
+        <div class="joinTitle">닉네임</div>
+        <input type="text" name="nickname" placeholder="닉네임을 입력하세요" class="joinInput" value="${dto.nickname }" readonly>
+      </li>
+      <li>
+        <input type="button" value="수정 하기" class="joinInput submit" onclick = "location.href='userInfoUpdate.deco'">
+      </li>
+    </ul>
+</form>
 <%@ include file="../bottom.jsp" %>
 </body>
 </html>

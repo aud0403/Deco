@@ -40,7 +40,7 @@ public class UserInfoDeleteAction implements Action {
 	  		dao.delete(idx);
  		
 	      System.out.println(idx);
-	
+	      
 	      request.setAttribute("message", "회원탈퇴 되셨습니다 홈으로 이동합니다.");
 	      request.setAttribute("url","./" );
 		forward.isRedirect = false;

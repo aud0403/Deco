@@ -44,9 +44,11 @@ public class CafeAction implements Action {
 		ReviewDao rdao = ReviewDao.getInstance();
 		List<Review> reList = rdao.getReview(idx);
 		request.setAttribute("review", reList);
-		
 		request.setAttribute("cafe", ca);    
 		request.setAttribute("page", pageNo);
+		int reviewCnt =  rdao.cafeCount(idx);
+		request.setAttribute("reviewCnt", reviewCnt);
+		
 		
 		forward.isRedirect = false;
 		forward.url="deco/cafe.jsp";

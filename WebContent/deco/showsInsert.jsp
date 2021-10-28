@@ -61,7 +61,7 @@
 					<td> <div id="image_container"></div></td>
 				</tr>
 				<tr>
-					<td><label>외부 사진 등록</label></td>
+					<td><label>내부 사진 등록</label></td>
 					<td><input type="file" name="inpic" accept="image/*" placeholder="내부 이미지 파일을 선택해주세요"
 					onchange="setThumbnail(event);"></td>
 					<td><div id="image_container"></div></td>
