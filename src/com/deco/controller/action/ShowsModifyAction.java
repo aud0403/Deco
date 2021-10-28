@@ -56,7 +56,7 @@ public class ShowsModifyAction implements Action {
 		String phone= multi_request.getParameter("phone");
 		String outimage = multi_request.getFilesystemName("outimage");		
 		String inimage = multi_request.getFilesystemName("inimage");
-		String link = multi_request.getFilesystemName("link");
+		String link = multi_request.getParameter("link");
 		
 		System.out.println(link);
 		
