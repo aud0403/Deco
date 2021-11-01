@@ -19,7 +19,7 @@
       <a href="showsList.deco">Show</a>
       <a href="etcList.deco">Activity</a>
     </nav>
-<form type="hidden" action="cafeUpdate.deco?page=${page}"method="post">
+<form action="cafeUpdate.deco?page=${page}"method="post">
 <input type="hidden" value="${cafe.idx}" name="idx">
  <ul class="detailContents">
       <li class="detailTitle">
@@ -29,11 +29,11 @@
       <li class="detailImg">
         <div class="outImg">
           <div class="detailName"><외부 사진></div>
-          <img src="/image/${cafe.inimage}" alt="cafe_in">
+          <img src="/cimage/${cafe.outimage}" alt="cafe_out">
         </div>
         <div class="inImg">
           <div class="detailName"><내부 사진></div>
-          <img src="/image/${cafe.outimage}" alt="cafe_out">
+          <img src="/cimage/${cafe.inimage}" alt="cafe_in">
         </div>
         
         
@@ -45,8 +45,9 @@
       <li class="detailMenu">
         <div class="detailName">대표 메뉴</div>
         <ul class="menu"> <!--여기는 반복문으로 작성-->
-          <li class="detailText">${cafe.menu}</li>
-         
+        <c:forEach var="vo" items="${menuList }">
+          <li class="detailText">${vo}</li>
+        </c:forEach>
         </ul>
       </li>
       <li class="detailTime">
@@ -69,17 +70,15 @@
 
 
 
-<div>
+<div class="detailBtns">
    <input type="submit" value="수정" class="button small">
    <input type="button" onclick="location.href='foodList.deco?page=${page}'" value="리스트" class="button small">
-</div>
 </form>
-<section>
  <form action="dibsUpdate.deco">
     <input type="hidden" name="idx" value="${cafe.idx }">
-    <input type="submit" value="찜목록 추가/삭제">
+    <input type="submit" value="찜목록 추가/삭제" class="button small">
  </form>
-</section>
+</div>
 
 
 
@@ -134,7 +133,7 @@
           </div>
         </div>
         <div>
-          <img class="reviewImg" src="/reviewimage/${re.imgfile}"></img>
+          <img class="reviewImg" src="/reviewimage/${re.imgfile}" onerror="this.src='/srcimg/기본이미지.png'"></img>
         </div>  
       </div>
    </c:forEach>

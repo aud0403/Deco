@@ -1,9 +1,13 @@
 :root {
   /* color */
   --black-color: #232323;
-  --white-color: #f9f8f8;
+  /* --white-color: #f9f8f8; */
+  --white-color: white;
   --light-gray-color: #b2b2b2;
   --dark-gray-color: rgb(124, 124, 124);
+  --purple-color: #6900ff;
+  --red-color: #ff0000;
+  --light-purple-color: #e9d9ff;
 
   /* size */
   --padding: 12px;
@@ -33,16 +37,25 @@
   background-color: var(--white-color);
 }
 
+.cateoryAndCheckbox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: var(--white-color);
+}
+
 .category {
   display: flex;
   justify-content: center;
   width: 900px;
   padding: var(--padding);
   align-items: center;
-  border: 2px solid var(--dark-gray-color);
-  border-top: none;
-  background-color: var(--white-color);
+  /* border-bottom: 2px solid var(--dark-gray-color); */
+  border-bottom: 2px solid var(--purple-color);
   font-weight: bold;
+  background-color: var(--white-color);
 }
 
 .category a {
@@ -64,10 +77,8 @@
   width: 900px;
 }
 
-.checkbox.main {
-  border: 2px solid var(--dark-gray-color);
-  border-top: none;
-}
+/* .checkbox.main {
+} */
 
 .checkbox .subTitle {
   width: 50px;
@@ -106,7 +117,7 @@
   margin: calc(var(--padding) / 2) 0;
   width: 35px;
   height: 30px;
-  background-color: var(--black-color);
+  background-color: var(--purple-color);
   color: var(--white-color);
   border-radius: 5px;
   border: none;
@@ -121,11 +132,12 @@
 .searchResult {
   padding: var(--padding);
   width: 900px;
-  border-right: 2px solid var(--dark-gray-color);
-  border-left: 2px solid var(--dark-gray-color);
   text-align: center;
   background-color: var(--white-color);
   font-weight: bold;
+  font-size: var(--font-large);
+  /* border-top: 2px solid var(--dark-gray-color); */
+  border-top: 2px solid var(--purple-color);
 }
 
 /* 리스트 전체 */
@@ -134,8 +146,7 @@
   flex-wrap: wrap;
   width: 900px;
   justify-content: space-evenly;
-  border: 2px solid var(--dark-gray-color);
-  border-top: none;
+  border-bottom: 2px solid var(--purple-color);
   background-color: var(--white-color);
 }
 
@@ -144,22 +155,20 @@
   display: flex;
   width: 45%;
   margin: var(--padding);
-  /* border: 2px solid var(--dark-gray-color); */
-  border: none;
+  border: 2px solid var(--white-color);
   border-radius: 5px;
   text-decoration: none;
   color: var(--black-color);
 }
 
 .list:hover {
-  /* border: 2px solid crimson; */
-  background-color: bisque;
+  /* border: 2px solid var(--purple-color); */
+  background-color: var(--light-purple-color);
 }
 
 .list .img {
   margin: var(--padding);
   border-radius: 5px;
-
 }
 
 .listContents {
@@ -211,9 +220,6 @@
   background-color: var(--white-color);
   text-align: center;
   padding: var(--padding);
-  border-left: 2px solid var(--dark-gray-color);
-  border-right: 2px solid var(--dark-gray-color);
-  border-bottom: 2px solid var(--dark-gray-color);
 }
 
 .pagebutton a {
@@ -225,7 +231,73 @@
 }
 
 .pagebutton a:hover {
-  color: var(--light-gray-color);
+  color: var(--white-color);
   font-weight: bold;
-  background-color: var(--black-color);
+  background-color: var(--purple-color);
+}
+
+.pagebutton .current {
+  color: var(--white-color);
+  background-color: var(--purple-color);
+}
+
+.topBtn {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+}
+
+.topBtn a {
+  color: var(--purple-color);
+  background-color: var(--white-color);
+  border: 3px solid var(--purple-color);
+  padding: 5px 9px;
+  border-radius: 5px;
+}
+
+/* 반응형 디자인 */
+@media screen and (max-width: 768px) {
+  .cateoryAndCheckbox,
+  .category,
+  .checkbox,
+  .searchResult,
+  .lists,
+  .pagebutton {
+    width: 100%;
+  }
+
+  .lists {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .list {
+    align-items: center;
+  }
+
+  .listContents {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .locationAndReveiwAndGrade {
+    width: 100%;
+  }
+
+  .locationAndReveiwAndGrade li {
+    float: left;
+    margin-right: 5px;
+    font-size: var(--font-medium);
+    color: var(--dark-gray-color);
+  }
+  .locationAndReveiwAndGrade li::after {
+    padding-left: 5px;
+    content: "|";
+    color: var(--light-gray-color);
+  }
+  .locationAndReveiwAndGrade li:last-child::after {
+    content: "";
+  }
 }

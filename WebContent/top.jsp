@@ -8,22 +8,46 @@
 
   <title>Document</title>
   <link rel="stylesheet" href="top_bottom.css">
+  <script src="top.js" defer>
+  	
+  </script>
 </head>
 <body>
+<header class="topheader">
+    <a href="home.deco" class="logo">
+      <div class="toplogo">
+        DECO
+      </div>
+    </a>
+    <ul class="topmenu">
+      <li><a href="cafeList.deco">Search</a></li>
+      <li><a href="best.deco">Hot Place</a></li>
+      <li><a href="restration.deco">Registration</a></li>
+      <li><a href="mypage.deco">My Page</a></li>
+    </ul>
+    <div class="topnickname">
+      <a href="">${user.name }</a>
+      <span> 님 반갑습니다.</span>
+      <a href="logout.deco" class="topmenu">로그아웃</a>
+    </div>
+    <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
+  </header>
+
+
+
+<%-- 
   <header class="header">
+  <a href="home.deco" class="logo">
     <div class="logo">
       DECO
     </div>
+    </a>
     <ul class="menu">
       <li><a href="cafeList.deco">Search</a></li>
       <li><a href="best.deco">Hot Place</a></li>
       <li><a href="mypage.deco">My Page</a></li>
-      <li><a href="">About Us</a></li>
-      <li><a href="cafeInsert.deco">inset카페</a></li>
-      <li><a href="foodInsert.deco">inset식당</a></li>
-      <li><a href="showsInsert.deco">isnet공연</a></li>
-      <li><a href="etcInsert.deco">isnet이색</a></li>
-     
+      <li><a href="restration.deco">Restration</a></li>
+         
     </ul>
     <div class="nickname">
      <!-- <li id="logintest"> -->
@@ -38,6 +62,7 @@
 	<a href="mypage.deco" class="menu">마이페이지</a>
 	<!-- </li> -->
     </div>
-  </header>
+    <a href="#" class="hamburger"><i class="fas fa-bars"></i></a>
+  </header> --%>
 </body>
 </html>

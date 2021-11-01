@@ -38,7 +38,7 @@
   width: 900px;
   padding: var(--padding);
   align-items: center;
-  border-bottom: 2px solid var(--dark-gray-color);
+  border-bottom: 2px solid var(--purple-color);
   border-top: none;
   background-color: var(--white-color);
   font-weight: bold;
@@ -128,6 +128,7 @@
 
 .detailMenu .menu li {
   padding: calc(var(--padding) / 3);
+  text-align: center;
 }
 
 .detailTime {
@@ -156,6 +157,23 @@
   width: 800px;
   height: 380px;
 }
+
+
+.detailBtns{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.detailBtns .button.small{
+	margin: 12px;
+	padding: 7px;
+	background-color: var(--purple-color);
+	color: white;
+	border:none;
+}
+
 
 .reviewBar {
   display: flex;
@@ -266,7 +284,7 @@
 .makeReviewChooseImg label i {
   border: none;
   border-radius: 2px;
-  background-color: var(--black-color);
+  background-color: var(--purple-color);
   width: 100%;
   color: var(--white-color);
   text-align: center;
@@ -276,7 +294,7 @@
 .makeReviewBtn {
   border: none;
   border-radius: 2px;
-  background-color: var(--black-color);
+  background-color: var(--purple-color);
   width: 100%;
   color: var(--white-color);
   text-align: center;
@@ -306,11 +324,21 @@
   border-radius: 5px;
 }
 
+.reviewList a{
+	color: white;
+	background-color:var(--purple-color);
+	text-decoration: none;
+	 padding: 5px;
+	 margin-left: 200px;
+}
+
+
 .reviewNameGrade {
   list-style: none;
   display: flex;
   align-items: center;
   color: var(--black-color);
+ 
 }
 
 .reviewNameGrade li {

@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<%@ include file="../top3.jsp" %>
+<%@ include file="../top.jsp" %>
 
 <section>
 <div>

@@ -41,20 +41,25 @@ public class ShowsInsertAction implements Action {
 	   try {
 	      MultipartRequest multi_request = new MultipartRequest(request,path,size,"UTF-8",
 	                                    new DefaultFileRenamePolicy());
-	    String outimage = multi_request.getFilesystemName("outpic");		
-	    String inimage = multi_request.getFilesystemName("intpic");		
-
-		
-		String name = multi_request.getParameter("name");
-		String addr = multi_request.getParameter("addr");
-		String location = multi_request.getParameter("location");
-		String menu = multi_request.getParameter("menu");
-		double grade= Double.parseDouble(multi_request.getParameter("grade"));
-		String phone = multi_request.getParameter("phone");
-		String opentime = multi_request.getParameter("opentime");
-		String closetime = multi_request.getParameter("closetime");
-		String content = multi_request.getParameter("content");
-		String link = multi_request.getParameter("link");
+	      String name = multi_request.getParameter("name");
+			String addr = multi_request.getParameter("addr");
+			String location = multi_request.getParameter("location");
+			String menu1 = multi_request.getParameter("menu1");
+			String menu2 = multi_request.getParameter("menu2");
+			String menu3 = multi_request.getParameter("menu3");
+			String price1 = multi_request.getParameter("price1");
+			String price2 = multi_request.getParameter("price2");
+			String price3 = multi_request.getParameter("price3");
+			double grade= Double.parseDouble(multi_request.getParameter("grade"));
+			String phone = multi_request.getParameter("phone");
+			String opentime = multi_request.getParameter("opentime");
+			String closetime = multi_request.getParameter("closetime");
+			String content = multi_request.getParameter("content");
+			String outimage = multi_request.getFilesystemName("outpic");		
+			String link = multi_request.getFilesystemName("link");		
+//		    String inimage = multi_request.getFilesystemName("intpic");	
+			
+			String menu = menu1+" : "+price1+"원";
 		
 		Shows dto= new Shows();
 		dto.setName(name);
@@ -67,7 +72,7 @@ public class ShowsInsertAction implements Action {
 		dto.setClosetime(closetime);
 		dto.setContent(content);
 		dto.setOutimage(outimage);
-		dto.setInimage(inimage);
+//		dto.setInimage(inimage);
 		dto.setLink(link);
 		
 		System.out.println(dto);

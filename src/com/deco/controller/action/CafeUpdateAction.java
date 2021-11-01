@@ -36,7 +36,8 @@ public class CafeUpdateAction implements Action {
 		CafeDao dao = CafeDao.getInstance();
 		
 		System.out.println(idx);
-		Cafe dto= dao.getOne(idx);
+		Cafe dto=new Cafe(); 
+			dto=dao.getOne(idx);
 		System.out.println(dto);
 		request.setAttribute("cafe", dto);
 		request.setAttribute("page", pageNo);

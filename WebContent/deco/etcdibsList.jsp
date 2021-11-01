@@ -12,6 +12,7 @@
   <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<%@ include file="../top.jsp" %>
   <!-- List -->
 
   <div class="decoList">
@@ -45,16 +46,7 @@
     
 
     </section>
-    <div class="pagebutton">
-      <a class="pagenum" href=""><i class="fas fa-angle-double-left"></i></a>
-      <a class="pagenum" href=""><i class="fas fa-angle-left"></i></a>
-      <a class="pagenum" href="">1</a>
-      <a class="pagenum" href="">2</a>
-      <a class="pagenum current" href="" >3</a>
-      <a class="pagenum" href="">4</a>
-      <a class="pagenum" href=""><i class="fas fa-angle-right"></i></a>
-      <a class="pagenum" href=""><i class="fas fa-angle-double-right"></i></a>
-    </div>
+    
   </div>
   <script>
 
@@ -74,6 +66,7 @@
     <div class="topBtn">
       <a href="#" title="위로 가기"><i class="fas fa-arrow-up"></i></a>
     </div>
+    <%@ include file="../bottom.jsp" %>
 </body>
 </html>
 

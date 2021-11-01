@@ -63,6 +63,7 @@ body {
 .decoTitleTop_1,
 .decoTitleMiddle_2 {
   color: var(--purple-color);
+  /* font-family: AvenirNextLTPro-Bold, sans-serif; */
 }
 
 .decoTitleTop {
@@ -168,4 +169,51 @@ button:focus {
 
 .test li .firstA {
   padding-left: 7px;
+}
+
+/* 반응형 디자인 */
+
+@media screen and (max-width: 768px) {
+  .decoTitleTop,
+  .decoTitleMiddle,
+  .decoTitleBottom {
+    display: none;
+  }
+
+  .decoContent,
+  .login {
+    height: 100%;
+    width: 500px;
+  }
+
+  .login {
+    justify-content: center;
+    border: none;
+    box-shadow: none;
+  }
+
+  .login input {
+    margin: 14px;
+  }
+
+  .subTitle {
+    font-size: calc(var(--font-title-bottom) * 2);
+    padding: 35px;
+  }
+  .subContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 250px;
+  }
+
+  .subContent input {
+    font-size: 20px;
+  }
+
+  .test li a {
+    font-size: 14px;
+  }
 }

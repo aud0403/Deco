@@ -1,7 +1,9 @@
 package com.deco.controller.action;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -33,16 +35,36 @@ public class CafeAction implements Action {
 	       return forward;
 	    }
 		
-	
+	    //메뉴 리스트 만들기
+	    
+	    
+	    
+	    
+	    
+	    
 		int idx = Integer.parseInt(request.getParameter("idx"));
 		
 		if(request.getParameter("page")==null) pageNo=1;
 	      else pageNo = Integer.parseInt(request.getParameter("page"));
 		
 		Cafe ca=dao.getOne(idx);
+		
+		
+		
+		
+		
+		// 메뉴 list 만들기
+	      String menu = ca.getMenu();
+	      List<String> menuList = new ArrayList<String>();
+	      StringTokenizer menuToken = new StringTokenizer(menu,"/");
+	      while(menuToken.hasMoreTokens()) {
+	         String s = menuToken.nextToken();
+	         menuList.add(s);
+	      }
 
 		ReviewDao rdao = ReviewDao.getInstance();
 		List<Review> reList = rdao.getReview(idx);
+		request.setAttribute("menuList", menuList);
 		request.setAttribute("review", reList);
 		request.setAttribute("cafe", ca);    
 		request.setAttribute("page", pageNo);

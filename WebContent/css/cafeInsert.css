@@ -5,7 +5,7 @@
 }
 
 body {
-  min-height: 100vh;
+  height: 100%;
 }
 
 label {
@@ -70,11 +70,16 @@ button {
 }
 
 .container {
+	display: flex;
+	flex-direction: culumn;
+	justify-content: flex-start;
+	align-items:center;  
+	height: 100%;
   width: 55%;
   margin: 80px var(--center);
-  position: relative;
+  /* position: relative;
   top: 0;
-  left: 0;
+  left: 0; */
 }
 
 .logo-wrap {
@@ -95,10 +100,6 @@ button {
   /* box-shadow: 8px -5px 14px -1px rgb(0 0 0 / 20%); */
   border-radius: 15px;
   padding: 30px;
-  position: absolute;
-  top: 145px;
-  left: 50%;
-  transform: translateX(-50%);
   margin-bottom: 10px;
 }
 
@@ -195,14 +196,14 @@ button {
 }
 
 input[type="file"] {
-  position: absolute;
+  /* position: absolute;
   width: 1px;
   height: 1px;
   padding: 0;
   margin: -1px;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
-  border: 0;
+  border: 0; */ 
 }
 
 .form-btn {

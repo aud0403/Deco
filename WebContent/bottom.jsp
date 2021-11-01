@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/top_bottom.css">
 </head>
 <body>
+
   <footer class="footer">
     <div class="footerTitle">데코(DECO Co., Ltd.)</div>
     <ul class="footerContent">
@@ -26,5 +27,6 @@
       개인이 운영하는 업장에 심각한 피해를 줄 수 있는 악의적 의도로 게시물에 작성된 리뷰 등은<br>
       예고조치 없이 <b>삭제</b>될 수 있습니다.</div>
   </footer>
+  
 </body>
 </html>

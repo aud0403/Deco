@@ -1,6 +1,6 @@
 package com.deco.controller;
 
-import java.io.IOException; 
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,12 +14,13 @@ import com.deco.controller.action.ActionForward;
 import com.deco.controller.action.Alert2;
 import com.deco.controller.action.BestAction;
 import com.deco.controller.action.CafeAction;
+import com.deco.controller.action.CafeDibsListAction;
 import com.deco.controller.action.CafeInsertAction;
 import com.deco.controller.action.CafeListAction;
 import com.deco.controller.action.CafeModifyAction;
 import com.deco.controller.action.CafeUpdateAction;
 import com.deco.controller.action.ChangeAction;
-import com.deco.controller.action.CafeDibsListAction;
+import com.deco.controller.action.DibsListAction;
 import com.deco.controller.action.DibsUpdateAction;
 import com.deco.controller.action.EtcAction;
 import com.deco.controller.action.EtcDibsListAction;
@@ -83,6 +84,7 @@ public class FrontController extends HttpServlet {
 		System.out.println(spath);
 //		forward.setRedirect(false);
 //		forward.setUrl("./");
+		String url="./";
 		
 		if(spath.equals("/home_login.deco")) {			//메인
 			Action action = new HomeLoginAction();
@@ -125,6 +127,9 @@ public class FrontController extends HttpServlet {
 			forward = action.execute(request, response);
 		}else if(spath.equals("/userInfoDelete.deco")) {	// 회원 탈퇴
 			Action action = new UserInfoDeleteAction();
+			forward = action.execute(request, response);
+		}else if(spath.equals("/dibsList.deco")) {		// mypage에서 찜목록
+			Action action = new DibsListAction();
 			forward = action.execute(request, response);
 		}else if(spath.equals("/cafeUpdate.deco")) {	// 카페 정보 수정 -> cafeUpdate.jsp로
 			Action action = new CafeUpdateAction();
@@ -241,25 +246,24 @@ public class FrontController extends HttpServlet {
 			}else if(spath.equals("/Alert2.deco")) {
 				Action action = new Alert2();
 				forward = action.execute(request, response);
-			}else if(spath.equals("/cafeDibsList.deco")) {		// mypage에서 찜목록
-				Action action = new CafeDibsListAction();
-				forward = action.execute(request, response);
-			}else if(spath.equals("/foodDibsList.deco")) {		// mypage에서 찜목록
-				Action action = new FoodDibsListAction();
-				forward = action.execute(request, response);
-			}else if(spath.equals("/showsDibsList.deco")) {		// mypage에서 찜목록
-				Action action = new ShowsDibsListAction();
-				forward = action.execute(request, response);
-			}else if(spath.equals("/etcDibsList.deco")) {		// mypage에서 찜목록
-				Action action = new EtcDibsListAction();
-				forward = action.execute(request, response);
-			}
+			}else if(spath.equals("/cafeDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new CafeDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/foodDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new FoodDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/showsDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new ShowsDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/etcDibsList.deco")) {      // mypage에서 찜목록
+	            Action action = new EtcDibsListAction();
+	            forward = action.execute(request, response);
+	         }else if(spath.equals("/restration.deco")) {
+					forward = new ActionForward(false,"deco/restration.jsp");
+	         }
 
+		
 
-		
-		
-		
-		
 		
 		
 		

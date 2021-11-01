@@ -18,7 +18,6 @@
 		<nav class="category">
 			<a href="cafeList.deco">Cafe</a> <a href="foodList.deco">Restaurant</a>
 			<a href="showsList.deco">Show</a> <a href="etcList.deco">Activity</a>
-			<a href="home.deco">home</a>
 		</nav>
 
 		<section class="checkbox main">
@@ -77,8 +76,8 @@
 			<c:set var="pno" value="${pageDto.currentPage}" />
 			<c:forEach var="vo" items="${CafeList}" varStatus="status">
 				<a class="list" href="cafe.deco?idx=${vo.idx}&page=${pno}"> <img
-					src="/image/${vo.outimage}"
-					onerror="this.src='img/연남동_cafe_out_1.png'" alt="cafe-out"
+					src="/cimage/${vo.outimage}"
+					onerror="this.src='srcimg/기본이미지.png'" alt="cafe-out"
 					class="img" width="150px" height="150px">
 					<ul class="listContents">
 						<li class="listName">${vo.name }</li>
@@ -141,6 +140,9 @@
   }
   
   </script>
+  <div class="topBtn">
+        <a href="#" title="위로 가기"><i class="fas fa-arrow-up"></i></a>
+      </div>
   <%@ include file="../bottom.jsp" %>
 </body>
 </html>

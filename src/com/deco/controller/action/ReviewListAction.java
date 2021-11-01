@@ -45,7 +45,7 @@ public class ReviewListAction implements Action {
 		map.put("pageSize",pageSize);
 		map.put("startNo",pageDto.getStartNo());
 		List<Review> list = dao.getList10(map);
-		
+		System.out.println(list);
 		
 		request.setAttribute("ReviewList", list);
 		request.setAttribute("pageDto", pageDto);

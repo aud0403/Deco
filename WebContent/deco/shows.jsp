@@ -6,9 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>::deco::이색체험</title>
+<%@ include file="../top.jsp" %>
 </head>
 <title>::deco::cafe</title>
 <link rel="stylesheet" href="css/cafe.css">
+<script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 <body>
 
 <section>
@@ -207,4 +209,5 @@ geocoder.addressSearch('${etc.addr}', function(result, status) {
    </script>
 <!-- enctype="multipart/form-data" -->
 </body>
+<%@ include file="../bottom.jsp" %>
 </html>

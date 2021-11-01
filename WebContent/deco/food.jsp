@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>::deco::cafe</title>
+<%@ include file="../top.jsp" %>
 <link rel="stylesheet" href="css/cafe.css">
   <script src="https://kit.fontawesome.com/96c30f85d8.js" crossorigin="anonymous"></script>
 </head>
@@ -27,11 +28,11 @@
       </li>
       <li class="detailImg">
         <div class="outImg">
-          <div class="detailName"><외부 사진></div>
+          <div class="detailName"><내부 사진></div>
           <img src="/fimage/${food.inimage}" alt="food_in">
         </div>
         <div class="inImg">
-          <div class="detailName"><내부 사진></div>
+          <div class="detailName"><외부 사진></div>
           <img src="/fimage/${food.outimage}" alt="food_out">
         </div>
         
@@ -200,4 +201,5 @@ geocoder.addressSearch('${cafe.addr}', function(result, status) {
 <!-- enctype="multipart/form-data" -->
 
 </body>
+<%@ include file="../bottom.jsp" %>
 </html>
